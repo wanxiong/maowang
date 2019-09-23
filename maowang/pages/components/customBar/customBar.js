@@ -1,7 +1,10 @@
-
+const app = getApp()
 Component({
   data: {
-    animateFlg: false
+    animateFlg: false,
+    statusHeight: app.globalData.statusBarHeight,
+    top: app.globalData.top,
+    inputWidth: app.globalData.inputWidth
   },
   properties: {
     navH: { // 属性名

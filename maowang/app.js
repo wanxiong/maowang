@@ -7,6 +7,20 @@ App({
       success: res => {
         //导航高度
         this.globalData.navHeight = res.statusBarHeight + 46;
+        let bar = wx.getMenuButtonBoundingClientRect();
+        let h = ''
+        let top = 0
+        if (res.system.indexOf('iOS') > -1) {
+          h = 44; 
+          top = 6;
+        } else {
+          h = 48;
+          top = 8;
+        }
+        this.globalData.navHeight = res.statusBarHeight + h;
+        this.globalData.statusBarHeight = res.statusBarHeight;
+        this.globalData.top = top;
+        this.globalData.inputWidth = bar.left - 30 -10;
       }, fail(err) {
         console.log(err);
       }
