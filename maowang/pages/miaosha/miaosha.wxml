@@ -1,0 +1,89 @@
+<customBar navH="{{navH}}" isFix="{{false}}"  bind:onChangeNavBack="onChangeNavBack" backIcon="{{1}}" titleTexit='#fff' background='linear-gradient(90deg,rgba(225,2,129,1) 0%,rgba(238,37,63,1) 100%)' text='猫王秒杀'/>
+<view>
+  <!-- 猫王秒杀tab切换栏目 -->
+  <view class="tab_bar">
+    <view bindtap="switchBar" data-index="1"><view class="{{tabbar == 1 ? 'ative' : ''}}" >正在秒杀<text class="border_red"></text></view></view>
+    <view bindtap="switchBar" data-index="2"><view class="{{tabbar == 2 ? 'ative' : ''}}" >即将开始<text class="border_red"></text></view></view>
+    <text class="border"></text>
+  </view>
+  <!-- 倒计时区域 -->
+  <view class="countDown">
+    <view hidden="{{tabbar == 2}}">
+      <text>距离开始</text>
+      <text class="time">{{hIng}}</text>时
+      <text class="time">{{mIng}}</text>分
+      <text class="time">{{sIng}}</text>秒
+    </view>
+    <view hidden="{{tabbar == 1}}">
+      <text>距离开始</text>
+      <text class="time">{{hStart}}</text>时
+      <text class="time">{{mStart}}</text>分
+      <text class="time">{{sStart}}</text>秒
+    </view>
+  </view>
+  <!-- 猫王秒杀内容 -->
+  <view class="contain">
+    <!-- 正在秒杀 -->
+    <block wx:if="{{tabbar == 1}}">
+      <view class='miaosha_item' wx:for="{{ingData}}" wx:key="{{item.goods_id}}">
+        <view class="product">
+          <image class="img" src='{{item.goods_thumb}}' mode="aspectFit"></image>
+          <image wx:if="{{item.supplier_id}}" class="icon" src='../../image/self_support.png' mode="aspectFit"></image>
+        </view>
+        <view class="product_text">
+          <view>
+            <view class="two_msg title">{{item.goods_name}}</view>
+          </view>
+          <view class="ps">
+            <view class="max_money">
+              <image class="max_money_icon" src='../../image/money_icon.png' mode="aspectFit"></image>
+              <text class="max_money_now">{{item.promote_price}}</text>
+              <text class="max_money_price">￥{{item.shop_price}}</text>
+            </view>
+            <view class="max_num ps max_num-miaosha">
+              <text class="pro"></text>
+              <text class="pro-now"  style="width:{{item.proportionCustom}}%;"></text>
+              <text class="pro-text">{{item.proportionCustom < 90 ? '已抢'+ item.proportionCustom + '%' : '即将抢完'}}</text>
+            </view>
+            <!-- 去拼团 -->
+            <button class="btnIng" >
+              <text>马上抢</text>
+              <image class="" src='../../image/right_sm.png' mode="aspectFit"></image>
+            </button>
+          </view>
+        </view>
+      </view>
+    </block>
+    <!-- 即将开始 -->
+    <block wx:if="{{tabbar == 2}}">
+      <view class='miaosha_item' wx:for="{{startData}}" wx:key="{{item.goods_id}}">
+        <view class="product">
+          <image class="img" src='{{item.goods_thumb}}' mode="aspectFit"></image>
+          <image wx:if="{{item.supplier_id}}" class="icon" src='../../image/self_support.png' mode="aspectFit"></image>
+        </view>
+        <view class="product_text">
+          <view>
+            <view class="two_msg title">{{item.goods_name}}</view>
+          </view>
+          <view class="ps">
+            <view class="max_money">
+              <image class="max_money_icon" src='../../image/money_icon.png' mode="aspectFit"></image>
+              <text class="max_money_now">{{item.promote_price}}</text>
+              <text class="max_money_price">￥{{item.shop_price}}</text>
+            </view>
+            <view class="max_num">
+              <text>限购{{item.goods_number}}件</text>
+            </view>
+            <!-- 去拼团 -->
+            <form bindsubmit="{{ item.is_send == 1 ? '': 'startRemind'}}" data-index="{{index}}" report-submit data-json="{{item}}">
+            <button form-type="submit" class="{{item.is_send == 1 ? 'btn active' : 'btn'}}" >
+              <text>{{item.is_send == 1 ? '已预约' : '提醒我'}}</text>
+              <image class="" src='../../image/right_sm.png' mode="aspectFit"></image>
+            </button>
+            </form>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

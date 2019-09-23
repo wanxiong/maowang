@@ -1,0 +1,3 @@
+<view>
+  <customBar navH="{{navH}}" isFix="{{false}}" text='购物车'/>
+</view>

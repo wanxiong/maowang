@@ -1,0 +1,17 @@
+<customBar navH="{{navH}}" isFix="{{false}}"  bind:onChangeNavBack="onChangeNavBack" backIcon="{{1}}" titleTexit='#fff' background='linear-gradient(90deg,rgba(225,2,129,1) 0%,rgba(238,37,63,1) 100%)' text='环球猫王'/>
+<view>
+  <view class="logo">
+    <image src='../../image/logo.png' mode="aspectFit"></image>
+  </view>
+  <!-- 上级邀请 -->
+  <view class="{{params ? 'show Invitation' : 'Invitation'}}">
+    <view><text>您的邀请人</text></view>
+    <view><text>{{shareInfo.user_name}}</text></view>
+  </view>
+  <!--  -->
+  <view class="{{params ? 'menu' : 'menu no-params'}}">
+    <button class="btn-wechat" open-type='getUserInfo' lang="zh_CN" bindgetuserinfo="bindgetuserinfo" >
+    <image class="wechat" src='../../image/wechat.png' mode="aspectFit"></image><text>微信授权登录</text></button>
+    <view class="text"><text bindtap="goPhone">手机号密码登录</text></view>
+  </view>
+</view>

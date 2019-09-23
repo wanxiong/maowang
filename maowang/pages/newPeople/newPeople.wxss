@@ -1,0 +1,146 @@
+page{
+  background-color: #ff9323;
+}
+.contain{
+  padding: 20rpx 30rpx;
+  margin-top: -200rpx;
+  position: relative;
+}
+.more_btn{
+  height:88rpx;
+  line-height:88rpx;
+  background:rgba(255,255,255,1);
+  border-radius:44rpx;
+  font-weight:bold;
+  color:rgba(223,32,84,1);
+  font-size:32rpx;
+  text-align: center;
+  margin-top: 40rpx;
+}
+.item_box{
+  padding: 0 30rpx 40rpx;
+  background-color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+}
+.item_box > view{
+  width: 50%;
+  padding-right: 15rpx;
+  margin-top: 40rpx;
+  box-sizing: border-box;
+}
+.item_box > view:nth-child(2n){
+  width: 50%;
+  padding-left: 15rpx;
+  padding-right: 0px;
+}
+.item_box_title{
+  font-size:28rpx;
+  color:rgba(51,51,51,1);
+  height: 76rpx;
+  text-align: center;
+  margin-top: 20rpx;
+}
+.item_box_money{
+  text-align: center;
+  margin-top: 10rpx;
+}
+.item_box_money > text:nth-of-type(1){
+  font-size:36rpx;
+  color:rgba(223,32,84,1);
+  line-height:26rpx;
+  font-weight:bold;
+  margin-left: 6rpx;
+  margin-right: 8rpx;
+}
+.item_box_money > text:nth-of-type(2){
+  font-size:24rpx;
+  text-decoration:line-through;
+  color:rgba(153,153,153,1);
+  line-height:26rpx;
+}
+.item_box_money_btn{
+  padding: 0 20rpx;
+  margin-top: 10rpx;
+  
+}
+.item_box_money_btn text{
+  font-size:28rpx;
+  font-weight:bold;
+  color:rgba(255,255,255,1);
+  line-height:60rpx;
+  height:60rpx;
+  background:linear-gradient(90deg,rgba(225,2,129,1) 0%,rgba(238,37,63,1) 100%);
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  border-radius: 40rpx;
+}
+.item_box_image {
+  /* padding: 0 20rpx; */
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+}
+.item_box_image image{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.top_bg{
+  position: relative;
+}
+.top_bg image{
+  width: 100%;
+  height: 590rpx;
+}
+.tob_money{
+  position: absolute;
+  top: 100rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.tob_money text{
+  height:80rpx;
+  font-size:110rpx;
+  font-weight:600;
+  color:rgba(223,32,84,1);
+  line-height:133rpx;
+  margin-right: 5px;
+}
+.tob_money image{
+  width: 34rpx;
+  height: 33rpx;
+}
+.shop_title{
+  height:34rpx;
+  font-size:36rpx;
+  font-weight:800;
+  color:rgba(51,51,51,1);
+  line-height:26rpx;
+  text-align: center;
+  background-color: #fff;
+  padding-bottom: 10rpx;
+  padding-top: 56rpx;
+  border-top-left-radius: 45%;
+  border-top-right-radius: 45%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.shop_title image:nth-of-type(1) {
+  width: 34rpx;
+  height: 30rpx;
+  margin-right: 20rpx;
+}
+.shop_title image:nth-of-type(2) {
+  width: 34rpx;
+  height: 30rpx;
+  margin-left: 20rpx;
+}
+.money_icon_1{
+  width: 13rpx;
+  height: 20rpx;
+}

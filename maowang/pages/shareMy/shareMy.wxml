@@ -1,0 +1,53 @@
+<customBar navH="{{navH}}" isFix="{{false}}" background="{{'transparent'}}" backIcon="{{1}}"  bind:onChangeNavBack="onChangeNavBack" text=''/>
+<!-- 非浮动区域 -->
+<view>
+  <!-- 文字区域 -->
+  <view class="share_sub_title">
+    <view>
+      <image class="share_sub_title_one" mode="aspectFill" src='../../image/share_title.png'>
+    </image>
+    </view>
+    <view>
+      <text class="share_sub_title_text">{{data.bonus_money}}</text>
+      <image class="share_sub_title_two" mode="aspectFill" src='../../image/share_title_1.png'>
+      </image>
+    </view>
+  </view>
+  <view class="qrcode_menu">
+    <image class="sub_share" mode="aspectFill" src='../../image/share_bg_1.png'>
+      <!-- 用户名 -->
+      <button bindtap="share" class="share_btn">分享</button>
+      <image class="share_qrcode" src="{{qrcode}}"></image>
+    </image>
+    <view class="user">昵称昵称，邀你赚人民币!</view>
+  </view>
+</view>
+
+
+
+<!-- 
+
+</image> -->
+<!-- 分享按钮 -->
+<popup show="{{isShow}}" bind:closePop="closePop" bind:animaEnd="animaEnd" class="changeAward" trigger="{{true}}">
+  <view class='p-contain' catchtap='maxStartPla'>
+    <view class="share_title">
+      <text>分享</text>
+      <image mode="aspectFill" bindtap="closeShare" class="money_link_icon" src='../../image/close.png'>
+      </image>
+    </view>
+    <view class="share_link">
+      <view >
+        <button open-type='share'>
+          <image mode="aspectFill" bindtap="goShare" class="money_link_icon" src='../../image/share_1.png'>
+          </image>
+          <text>分享到微信好友</text>
+        </button>
+      </view>
+      <view bindtap="poster" >
+        <image mode="aspectFill" bindtap="close_money" class="close_icon" src='../../image/share_2.png'></image>
+        <text>生成分享海报</text>
+      </view>
+    </view>
+  </view>
+</popup>

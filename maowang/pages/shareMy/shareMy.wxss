@@ -1,0 +1,158 @@
+page{
+  min-height: 100%;
+  background:url('https://mao.520haigo.com/shopapi/image/share_bg.png') no-repeat center;
+}
+.share_title{
+  height:80rpx;
+  line-height:80rpx;
+  background:rgba(245,245,245,1);
+  font-size:32rpx;
+  color:rgba(51,51,51,1);
+  padding: 0 30rpx;
+  position: relative;
+}
+
+.share_link{
+  padding: 48rpx 0;
+  display: flex;
+  justify-content: center;
+  background-color: #fff;
+  font-size:24rpx;
+  color: #333;
+  
+}
+.share_title image{
+  width: 28rpx;
+  height: 28rpx;
+  position: absolute;
+  right: 30rpx;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.share_link > view:nth-of-type(1) image{
+  width: 100rpx;
+  height: 100rpx;
+  margin-bottom: 20rpx;
+  
+}
+.share_link > view:nth-of-type(1) button{
+  margin: 0;
+  padding: 0;
+  background-color: transparent !important;
+  border: 0px solid transparent;
+  outline: none;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-size:24rpx;
+  line-height: 24rpx;
+}
+.share_link > view:nth-of-type(1) button::after{
+  margin: 0;
+  padding: 0;
+  background-color: transparent !important;
+  border: 0px solid transparent;
+  outline: none;
+}
+.share_link > view:nth-of-type(1){
+  margin-right: 176rpx;
+ 
+}
+.share_link > view:nth-of-type(2){
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 24rpx;
+}
+.share_link > view:nth-of-type(2) image{
+  width: 100rpx;
+  height: 100rpx;
+  margin-bottom: 20rpx;
+}
+.p-contain{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: block;
+}
+.share_bg,.max-contain{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  
+}
+.share_bg > image{
+  width: 100%;
+  height: 100%;
+}
+.sub_share{
+  position: relative;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 674rpx;
+  height: 959rpx;
+  margin: 0 auto;
+}
+.share_btn{
+  position: absolute;
+  bottom: 120rpx;
+  left: 0;
+  width:460rpx;
+  height:88rpx;
+  background:rgba(255,234,206,1);
+  box-shadow:0px 18px 20px 0px rgba(0, 0, 0, 0.1);
+  border-radius:44rpx;
+  font-size:32rpx;
+  font-weight:bold;
+  color:rgba(244,5,56,1);
+  left: 50%;
+  transform: translateX(-50%);
+}
+.share_qrcode{
+  position: absolute;
+  top: 120rpx;
+  left: 0;
+  width:250rpx;
+  height:250rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.share_sub_title{
+  position: relative;
+  margin-bottom: 70rpx;
+}
+.share_sub_title_one{
+  width: 390rpx;
+  height: 110rpx;
+}
+.share_sub_title_two{
+  width: 274rpx;
+  height: 109rpx;
+}
+.share_sub_title_text{
+  color: #F70641;
+  font-weight:bold;
+  font-size:120rpx;
+}
+.share_sub_title > view{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.user{
+  position: absolute;
+  left: 50%;
+  color:rgba(255,234,206,1);
+  font-size:28rpx;
+  transform: translateX(-50%);
+  bottom: 337rpx;
+}
+.qrcode_menu{
+  position: relative;
+}

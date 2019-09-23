@@ -1,0 +1,23 @@
+<customBar navH="{{navH}}" isFix="{{false}}" backIcon="{{1}}" titleTexit='#fff' background='linear-gradient(90deg,rgba(225,2,129,1) 0%,rgba(238,37,63,1) 100%)'  bind:onChangeNavBack="onChangeNavBack" text='登录'/>
+<view class="contain">
+  <view class="input-default">
+    <view>
+      <view>
+      <input placeholder="请输入手机号码" placeholder-class='default-placeholder' data-name='phoneValue' bindinput="changeValue" value="{{phoneValue}}" type='number' maxlength="11"/>
+       <image wx:if="{{!!phoneValue}}" bindtap="close" data-name='phoneValue' class="close" src='../../../image/close.png' mode="aspectFit"></image>
+      </view>
+    </view>
+    <view>
+      <view>
+      <input password="{{type === 'password' ? true : false}}" type="text" value="{{passwordValue}}" data-name='passwordValue' placeholder-class='default-placeholder' placeholder="请输入密码" bindinput="changeValue"/>
+      <image bindtap="close" wx:if="{{!!passwordValue}}" data-name='passwordValue' class="close passwordV" src='../../../image/close.png' mode="aspectFit"></image>
+      <image wx:if="{{type === 'password'}}" bindtap="eyeStatus" data-name='text'  class="eye" src='../../../image/eye_close.png' mode="aspectFit"></image>
+      <image wx:else bindtap="eyeStatus" data-name='password' class="eye" src='../../../image/eye_open.png' mode="aspectFit"></image>
+      </view>
+    </view>
+  </view>
+  <view class="password">
+    <text bindtap="forgetPassword">忘记密码</text>
+  </view>
+  <view class="btn"><button bindtap="login" class="{{disabled ? 'disabled' : ''}}">登录</button></view>
+</view>

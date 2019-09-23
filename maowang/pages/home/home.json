@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "customBar": "../components/customBar/customBar",
+    "popup": "../components/popup/popup"
+  }
+}

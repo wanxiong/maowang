@@ -1,0 +1,248 @@
+<view class='box'>
+  <customBar navH="{{navH}}" text='首页' isFix bind:onChangeTitleBar="onChangeTitleBar" bind:onChangeQrcode="onChangeQrcode" opacity="{{opacity}}"/>
+  <!-- 领钱按钮 -->
+  <view class="money" wx:if="{{showMoney}}">
+    <image bindtap="openMoney" src="../../image/money.png" mode="aspectFill" />
+  </view>
+  <!-- 轮播区域 -->
+  <view class='swiper'>
+    <swiper indicator-dots="{{indicatorDots}}"
+    autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{data.ad_list}}" wx:key="{{item.id}}">
+      <swiper-item>
+        <image src="{{item.ad_image_url}}" mode="aspectFill" />
+      </swiper-item>
+    </block>
+  </swiper>
+  </view>
+  <!-- icon入口区域 -->
+  <view class='link-menu'>
+    <view>
+      <view class='link-menu-icon' bindtap="goMiaoSha">
+        <image src='../../image/item-1.png' mode="aspectFit"></image>
+        <view>秒杀</view>
+      </view>
+      <view class='link-menu-icon'>
+        <image src='../../image/item-2.png' mode="aspectFit"></image>
+        <view>猫王商城</view>
+      </view>
+      <view class='link-menu-icon'>
+        <image src='../../image/item-3.png' mode="aspectFit"></image>
+        <view>猫王榜</view>
+      </view>
+      <view class='link-menu-icon'>
+        <image src='../../image/item-4.png' mode="aspectFit"></image>
+        <view>置换商城</view>
+      </view>
+      <view class='link-menu-icon'>
+        <image src='../../image/item-5.png' mode="aspectFit"></image>
+        <view>加盟代理</view>
+      </view>
+    </view>
+    <!--  -->
+    <view>
+      <view class='link-menu-icon' bindtap="goPinTuan">
+        <image src='../../image/item-6.png' mode="aspectFit"></image>
+        <view>拼团</view>
+      </view>
+      <view class='link-menu-icon'>
+        <image src='../../image/item-7.png' mode="aspectFit"></image>
+        <view>猫王品牌</view>
+      </view>
+      <view class='link-menu-icon'>
+        <image src='../../image/item-8.png' mode="aspectFit"></image>
+        <view>入驻商</view>
+      </view>
+      <view class='link-menu-icon'>
+        <image src='../../image/item-9.png' mode="aspectFit"></image>
+        <view>积分商城</view>
+      </view>
+      <view class='link-menu-icon'>
+        <image src='../../image/item-10.png' mode="aspectFit"></image>
+        <view>代理特权</view>
+      </view>
+    </view>
+  </view>
+  <!-- 菜单下方--广---告 -->
+  <view class='link-menu-ad' wx:if="{{data.menu_bottom_ad && data.menu_bottom_ad.ad_url}}">
+    <image mode="aspectFill" data-json="{{data.app_bottom_ad}}" bindtap='taplink' data="{{data.menu_bottom_ad}}" src="{{data.menu_bottom_ad ? data.menu_bottom_ad.ad_url: ''}}"></image>
+  </view>
+  <!-- 猫王秒杀 拼团 -->
+  <view class='MW'>
+    <!-- 猫王秒杀商品 -->
+    <view class='MW-MS'>
+      <view>
+        <image src='../../image/MW-1.png'></image>
+        <text>更多</text>
+      </view>
+      <view class="default_miaosha">
+        <text>{{data.promote_goods.promote_info && data.promote_goods.promote_info.start_sale}}</text>
+        <text wx:if="{{timer}}">{{timer}}</text>
+      </view>
+      <block wx:if="{{data.promote_goods}}">
+        <block wx:for="{{data.promote_goods.promote_data}}" wx:key="{{item.goods_id}}">
+          <view class='MW-MS-item' >
+            <view><image src='../../image/MW-1-1.png' mode="aspectFill"></image></view>
+            <view class='MW-MS-money'>
+              <image src='../../image/money_icon.png' mode='aspectFill'></image>
+              <text>{{item.promote_price}}</text>
+            </view>
+            <view class='MW-MS-money-del'>
+              <text>¥</text>
+              <text>{{item.shop_price}}</text>
+              <text class='MW-MS-money-del-after'></text>
+            </view>
+          </view>
+          <view class='MW-MS-money-img'>
+              <image src="{{item.goods_thumb_url}}" mode="aspectFill"></image>
+          </view>
+        </block>
+      </block>
+    </view>
+    <!-- 拼团秒杀商品 -->
+    <view class='MW-PT'>
+       <view>
+        <image src='../../image/MW-2.png'></image>
+        <text bindtap="goPinTuan">更多</text>
+      </view>
+      <view class="default_pintuan">
+        <text>{{data.pintuan.info && data.pintuan.info.start_sale}}</text>
+        <view class="Scan" bindtap="scan">
+          <image src='../../image/scan.png'></image>
+        </view>
+      </view>
+      <!-- 展示区域 -->
+      <block wx:if="{{data.pintuan}}">
+        <block wx:for="{{data.pintuan.data}}" wx:key="{{item.goods_id}}">
+          <view class='MW-MS-item'>
+            <view><image src='../../image/MW-2-2.png' mode='aspectFill'></image></view>
+            <view class='MW-PT-money'>
+              <image src='../../image/money_icon.png' mode='aspectFill'></image>
+              <text>{{item.group_price}}</text>
+            </view>
+            <view class='MW-PT-money-del'>
+              <text>¥</text>
+              <text>{{item.shop_price}}</text>
+              <text class='MW-PT-money-del-after'></text>
+            </view>
+          </view>
+          <view class='MW-PT-money-img'>
+              <image src="{{item.goods_thumb_url}}" mode="aspectFill"></image>
+          </view>
+        </block>
+      </block>
+    </view>
+  </view>
+  <!-- 评团 秒杀的广告 -->
+  <view class='MW-sub-ad'>
+    <image mode="aspectFill" data-json="{{data.app_bottom_ad}}" bindtap='taplink' data="{{data.app_bottom_ad}}" src="{{data.app_bottom_ad ? data.app_bottom_ad.ad_url: ''}}"></image>
+  </view>
+  <!--  -->
+</view>
+
+<!-- 1代表商城商品，2代表自主品牌,3代表商家商品，4代表置换专区 -->
+<view>
+  <!-- 商城商品开始 -->
+  <block wx:for="{{apiTwoPageData}}" wx:key="{{itemDataIndex}}" wx:for-item="itemData" wx:for-index="itemDataIndex">
+    <view wx:if="{{itemData}}">
+      <view class="home_more_title">
+        <image mode="aspectFill" src="../../image/home_icon.png"></image>
+        <text>{{itemData.recommend_title}}</text>
+      </view>
+      <view class="home_more_banner" wx:if="{{itemData.recommend_ad}}">
+        <image mode="aspectFill" src="{{itemData.recommend_ad.ad_url}}"></image>
+      </view>
+      <view class="home_more_product" wx:if="{{itemData.goods_list.length}}">
+        <view wx:for="{{itemData.goods_list}}" wx:key="{{item.goods_id}}">
+          <view class='item_box_image'>
+            <image class="item_box_image_banner" src="{{item.img_url}}" mode="aspectFill"></image>
+            <image wx:if="{{item.supplier_id == 0 && itemDataIndex != 4}}" class="icon" src='../../image/self_support.png' mode="aspectFit"></image>
+            <image wx:if="{{item.is_vip == 1 && itemDataIndex == 4}}" class="icon" src='../../image/self_support_2.png' mode="aspectFit"></image>
+          </view>
+          <view class="item_box_title two_msg">{{item.goods_name}}</view>
+          <view class="item_box_money">
+            <image class="money_icon_1" src="../../image/money_icon.png" mode="aspectFill"></image>
+            <text>{{item.shop_price}}</text>
+            <text>原价￥{{item.market_price}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <!-- 商城商品结束 -->
+
+  <!-- 优选好店开始 -->
+    <block wx:if="{{apiThreePageData.shop && apiThreePageData.shop.length}}">
+      <view>
+        <view class="home_more_title">
+          <image mode="aspectFill" src="../../image/home_icon.png"></image>
+          <text>优选好店</text>
+        </view>
+        <view class="home_more_banner" wx:if="{{apiThreePageData.shop.ad_url}}">
+          <image mode="aspectFill" src="{{apiThreePageData.shop.ad_url}}"></image>
+        </view>
+        <view class="home_more_product">
+          <view wx:for="{{apiThreePageData.shop}}" wx:key="{{item.supplier_id}}">
+            <view class='item_shop_logo'>
+              <image  src="{{item.supplier_logo}}" mode="aspectFill"></image>
+            </view>
+            <view class='item_shop_name'>
+              {{item.supplier_name}}
+            </view>
+            <view class="item_shop_count">
+              <view><text class="item_shop_count_text">销量</text><text>{{item.sale_num}}</text></view>
+              <view><text class="item_shop_count_text">商品</text><text>{{item.goods_number}}</text></view>
+            </view>
+            <view class="item_box_addre one_msg">{{item.supplier_address}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <!-- 优选好店结束 -->
+
+    <!-- 大牌专区开始 -->
+
+    <block wx:if="{{apiThreePageData.brand_region && apiThreePageData.brand_region.length}}">
+      <view>
+        <view class="home_more_title">
+          <image mode="aspectFill" src="../../image/home_icon.png"></image>
+          <text>大牌专区</text>
+        </view>
+        <view class="home_more_banner" wx:if="{{apiThreePageData.app_brand.ad_url}}">
+          <image mode="aspectFill" src="{{apiThreePageData.app_brand.ad_url}}"></image>
+        </view>
+        <view class="home_more_logo_list">
+          <view wx:for="{{apiThreePageData.brand_region}}" wx:key="{{item.brand_id}}">
+            <image  src="{{item.brand_logo}}" mode="aspectFill"></image>
+          </view>
+        </view>
+      </view>
+    </block>
+    <!-- 大牌专区结束 -->
+    <!-- 没有更多咯开始 -->
+    
+    <view class="no_more" wx:if="{{loadMoreFlag}}">
+      <text>没有更多咯~</text>
+    </view>
+    
+    <!-- 没有更多咯结束 -->
+</view>
+
+
+
+
+<!--  领奖界面  -->
+<popup show="{{isShow}}" bind:closePop="closePop" style_in='fadeIn' style_out='fadeOut'  bind:animaEnd="animaEnd" class="changeAward">
+  <view class='p-contain' catchtap='maxStartPla'>
+    <view class="close_icon"></view>
+    <view class="money_link">
+      <image mode="aspectFill" bindtap="goShare" class="money_link_icon" src='../../image/money_link.png'>
+      </image>
+      <image mode="aspectFill" bindtap="close_money" class="close_icon" src='../../image/close_2.png'></image>
+      <view class="share-money">
+        <text >{{shareMoney}}</text>
+        <image mode="aspectFill" bindtap="close_money" class="money_icon" src='../../image/money-icon.png'></image>
+      </view>
+    </view>
+  </view>
+</popup>

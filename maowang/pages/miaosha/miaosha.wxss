@@ -1,0 +1,217 @@
+page{
+  background-color: #f3f0f1;
+
+}
+.tab_bar{
+    height: 80rpx;
+    line-height: 80rpx;
+    background:rgba(255,255,255,1);
+    box-shadow:0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+    display: flex;
+    position: relative;
+}
+.tab_bar > view{
+  width: 50%;
+  font-size:32rpx;
+  color:rgba(51,51,51,1);
+  text-align: center;
+}
+.border{
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 40rpx;
+  width: 1px;
+  background-color: #DBD9DA;
+  top: 50%;
+}
+.tab_bar > view > view{
+  position: relative;
+  height: 100%;
+  display: inline-block;
+
+}
+.tab_bar > view > .border_red {
+  display: none;
+}
+.tab_bar > view .ative{
+  color: #E10281;
+  position: relative;
+}
+.tab_bar > view .ative .border_red{
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+  left: 0;
+  background:linear-gradient(90deg,rgba(225,2,129,1) 0%,rgba(252,75,174,1) 100%);
+  border-radius:3rpx;
+  height: 6rpx;
+  
+}
+.contain{
+  height: 100%;
+  /* padding: 20rpx 0; */
+}
+.miaosha_item {
+   padding: 10rpx 20rpx 10rpx 20rpx;
+   background-color: #fff;
+   display: flex;
+   margin-bottom: 20rpx;
+}
+.miaosha_item > view > view {
+   display: flex;
+   flex-direction: column;
+  justify-content: space-around;
+}
+.product{
+  position: relative;
+}
+.product .img{
+  width: 270rpx;
+  height: 270rpx;
+  position: relative;
+}
+.hot{
+  width: 24rpx;
+  height: 28rpx;
+  margin-right: 12rpx;
+}
+.product_text{
+  width: 100%;
+  padding: 7rpx 20rpx 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.btn{
+  position: absolute;
+  height:60rpx;
+  background:linear-gradient(90deg,rgba(0,152,75,1) 0%,rgba(5,196,63,1) 100%);
+  border-radius:30rpx;
+  right: 0;
+  color: #fff;
+  font-size:28rpx;
+  bottom: 10rpx;
+  display: flex;
+  align-items: center;
+}
+.btnIng{
+  position: absolute;
+  height:60rpx;
+  background:linear-gradient(90deg,rgba(225,2,129,1) 0%,rgba(238,37,63,1) 100%);
+  border-radius:30rpx;
+  right: 0;
+  color: #fff;
+  font-size:28rpx;
+  bottom: 10rpx;
+  display: flex;
+  align-items: center;
+}
+.btn image, .btnIng image{
+  width: 14rpx;
+  height: 24rpx;
+  display: inline-block;
+  margin-left: 9rpx;
+}
+.active{
+  position: absolute;
+  height:60rpx;
+  border:1px solid rgba(0,153,75,1);
+  background: #fff;
+  border-radius:30rpx;
+  right: 0;
+  color:rgba(0,153,75,1);
+  font-size:28rpx;
+  bottom: 10rpx;
+  display: flex;
+  align-items: center;
+}
+.ps{
+  position: relative;
+}
+.btn image{
+  width: 14rpx;
+  height: 24rpx;
+  display: inline-block;
+  margin-left: 9rpx;
+}
+.title{
+  font-size:28rpx;
+  color:rgba(51,51,51,1);
+  height: 76rpx;
+}
+.max_num{
+  font-size:24rpx;
+  color:rgba(153,153,153,1);
+  margin-top: 32rpx;
+  margin-bottom: 30rpx;
+}
+.max_num-miaosha{
+  width:200rpx;
+  border-radius:14rpx;
+  overflow: hidden;
+}
+.max_num .pro{
+  width:200rpx;
+  height:28rpx;
+  background:linear-gradient(90deg,rgba(255,126,199,1) 0%,rgba(255,202,232,1) 100%);
+  border-radius:14rpx;
+  display: block;
+}
+.pro-now{
+  width:0px;
+  height:28rpx;
+  position: absolute;
+  left: 0rpx;
+  top: 0px;
+  background:linear-gradient(90deg,rgba(225,2,129,1) 0%,rgba(238,37,63,1) 100%);
+  border-radius:14rpx;
+  display: block;
+  transition: all .5s ease-in !important;
+}
+.max_num .pro-text{
+  font-size:20rpx;
+  color:rgba(255,255,255,1);
+  position: absolute;
+  left: 20rpx;
+  top: 0%;
+  /* 
+  transform: translateY(-50%); */
+}
+.max_money_price{
+  font-size:20rpx;
+  text-decoration:line-through;
+  color:rgba(153,153,153,1);
+  margin-left: 20rpx;
+}
+.max_money_now{
+  font-size:40rpx;
+  font-weight:bold;
+  color:rgba(225,2,129,1);
+}
+.max_money_icon{
+  width: 16rpx;
+  height: 24rpx;
+  margin-right: 7rpx;
+}
+.time{
+  color: #DF2054;
+}
+.countDown{
+  font-size:24rpx;
+  color:rgba(51,51,51,1);
+  line-height:40rpx;
+  height: 40rpx;
+  text-align: center;
+  background-color: #fff;
+  box-shadow:0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+  padding: 14rpx 0px;
+  margin-bottom: 20rpx;
+} 
+.icon{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 40rpx;
+  height: 70rpx;
+}

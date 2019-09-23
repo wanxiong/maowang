@@ -1,0 +1,59 @@
+.logo {
+  margin-top: 226rpx;
+  text-align: center;
+}
+.logo image {
+  width: 240rpx;
+  height: 240rpx;
+  
+}
+.menu{
+  padding: 0px 75rpx;
+}
+.btn-wechat{
+  background-color: #1AAD19;
+  color: #fff;
+  border-radius:45px;
+  font-size:32rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.text{
+  font-size:32rpx;
+  color:rgba(34,34,34,1);
+  text-align: center;
+  margin-top: 50rpx;
+
+}
+.wechat{
+  width: 43rpx;
+  height: 36rpx;
+  margin-right: 10rpx;
+}
+.Invitation{
+  text-align: center;
+  display: none;
+}
+.Invitation view:nth-of-type(1){
+  font-size:30rpx;
+  color:#666;
+  margin-top: 106rpx;
+}
+
+.Invitation view:nth-of-type(2){
+  font-size:32rpx;
+  color: #333;
+  margin-top: 40rpx;
+  margin-bottom: 70rpx;
+}
+.show{
+  display: block !important;
+}
+.no-params{
+ margin-top: 268rpx; 
+}
+button::after{
+  border: none;
+}

@@ -1,0 +1,3 @@
+<!--pages/webview/webview.wxml-->
+<!-- <customBar navH="{{navH}}" isFix="{{false}}"  bind:onChangeNavBack="onChangeNavBack" text=''/> -->
+<web-view src="{{url}}"></web-view>

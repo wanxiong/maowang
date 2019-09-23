@@ -1,0 +1,65 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/cart/cart",
+    "pages/my/my",
+    "pages/merchant/merchant",
+    "pages/classification/classification",
+    "pages/webview/webview",
+    "pages/components/customBar/customBar",
+    "pages/login/login",
+    "pages/login/phoneLogin/phoneLogin",
+    "pages/login/forgetPassword/forgetPassword",
+    "pages/pintuan/pintuan",
+    "pages/login/phoneAuth/phoneAuth",
+    "pages/shareMy/shareMy",
+    "pages/newPeople/newPeople",
+    "pages/miaosha/miaosha"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "color": "#212121",
+    "selectedColor": "#8c0000",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "iconPath": "image/icon-1.png",
+        "selectedIconPath": "image/icon-1-active.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "image/icon-2.png",
+        "selectedIconPath": "image/icon-2-active.png",
+        "text": "分类"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "image/icon-3.png",
+        "selectedIconPath": "image/icon-3-active.png",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "image/icon-4.png",
+        "selectedIconPath": "image/icon-4-active.png",
+        "text": "入驻商"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "image/icon-5.png",
+        "selectedIconPath": "image/icon-5-active.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,35 @@
+<customBar navH="{{navH}}" isFix="{{false}}"  bind:onChangeNavBack="onChangeNavBack" backIcon="{{1}}" titleTexit='#fff' background='linear-gradient(90deg,rgba(225,2,129,1) 0%,rgba(238,37,63,1) 100%)' text='猫王拼团'/>
+<view class="contain">
+  <view wx:for="{{data}}">
+    <view class="product">
+      <image class="img" src='{{item.goods_thumb_url}}' mode="aspectFit"></image>
+      <image wx:if="{{item.supplier_id == 0}}" class="icon" src='../../image/self_support.png' mode="aspectFit"></image>
+    </view>
+    <view class="product_text">
+      <view>
+        <view class="msg title">
+          {{item.group_name}}
+        </view>
+        <view class="number">
+          <image class="hot" src='../../image/hot.png' mode="aspectFit"></image>
+          <text>已拼{{item.sell_num}}件</text>
+        </view>
+      </view>
+      <view class="ps">
+        <view class="detail">
+          <text>{{item.group_num}}人团</text>
+          <image class="max_money_icon" src='../../image/money_icon.png' mode="aspectFit"></image>
+          <text>{{item.group_price}}</text>
+        </view>
+        <view class="price">
+          <text>单人价￥{{item.shop_price}}</text>
+        </view>
+        <!-- 去拼团 -->
+        <button class="btn" bindtap="goPinTuan" data-groupId="{{item.group_id}}" data-goodsId="{{item.data-groupId}}">
+          <text>去拼团</text>
+          <image class="" src='../../image/right_sm.png' mode="aspectFit"></image>
+        </button>
+      </view>
+    </view>
+  </view>
+</view>

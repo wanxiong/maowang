@@ -1,0 +1,8 @@
+<!--pages/webview/webview.wxml-->
+<customBar navH="{{navH}}" isFix="{{false}}"  bind:onChangeNavBack="onChangeNavBack" text='我的'/>
+<view>
+  <button bindtap="login">登录</button>
+  <button bindtap="clearAll">清除所有缓存</button>
+  <button bindtap="clearLogin">清除登陆缓存</button>
+  <button bindtap="clearLoginOne">清除授权第一步缓存</button>
+</view>

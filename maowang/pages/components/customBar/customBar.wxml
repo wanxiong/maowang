@@ -1,0 +1,25 @@
+
+<block wx:if="{{isFix}}">
+  <view class='nonav' style='height:{{navH}}px;background:rgba(255,255,255,{{opacity}});}}'>
+    <view class='nav-title'>
+      <view class="{{opacity == 1 ? 'nav-input-ok nav-input' : 'nav-input' }}">
+        <input placeholder="搜索你喜欢的商品" placeholder-class="{{opacity == 1 ? 'placeholder-class-ok' : 'placeholder-class' }}" />
+        <view class="nav-qr-box" bindtap='myQrcode'>
+          <image   class='nav-qr' src="{{opacity == 1 ? '../../../image/qrcode_black.png': '../../../image/qrcode.png'}}" mode='aspectFit'></image>
+        </view>
+        <text class="{{opacity == 1 ? 'nav-line-ok' : 'nav-line' }}"></text>
+        <image class='nav-search' src="{{opacity == 1 ? '../../../image/search_black.png': '../../../image/search.png'}}" mode='aspectFit'></image>
+        <view class='nav-modal' bindtap='changeInput'></view>
+      </view>
+    </view>
+  </view>
+</block>
+<block wx:else="{{isFix}}">
+  <view class='nav bg-white' style='height:{{navH}}px; background: {{background}};'>
+    <view class='nav-title' style='color: {{titleTexit}};'>
+      {{text}}
+      <image src="{{backIcon == 1 ? '../../../image/back_white.png' : '../../../image/back.png'}}" mode='aspectFit' class='back' bindtap='navBack'></image> 
+    </view>
+  </view>
+  <view style='height:{{navH}}px'></view>
+</block>

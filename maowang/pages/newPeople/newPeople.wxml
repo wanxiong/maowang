@@ -1,0 +1,43 @@
+<!--pages/webview/webview.wxml-->
+<customBar navH="{{navH}}" isFix="{{false}}"  bind:onChangeNavBack="onChangeNavBack" text='新人专享'/>
+<!-- 顶部图片钱展示 -->
+<view class="top_bg">
+  <view>
+    <image src="../../image/new_people_bg.png" mode="aspectFill"></image>
+    <view class="tob_money">
+      <text>{{data.bonus_money}}</text>
+      <image mode="aspectFill" bindtap="close_money" class="money_icon" src='../../image/money-icon.png'></image>
+    </view>
+  </view>
+</view>
+<view class="contain">
+  <!--  -->
+  <view class="shop_title">
+    <image mode="aspectFill"  src='../../image/new_people_left.png'></image>
+    <text>推荐商品</text>
+    <image mode="aspectFill"  src='../../image/new_people_right.png'></image>
+  </view>
+  <!--  -->
+  <view class="item_contain">
+    <view class="item_box">
+      <view wx:for="{{data.list}}" wx:key="{{item.id}}">
+        <view class='item_box_image'>
+          <image src="{{item.goods_img}}" mode="aspectFill"></image>
+        </view>
+        <view class="item_box_title two_msg">{{item.goods_name}}</view>
+        <view class="item_box_money">
+          <image class="money_icon_1" src="../../image/money_icon.png" mode="aspectFill"></image>
+          <text>{{item.shop_price}}</text>
+          <text>￥{{item.market_price}}</text>
+        </view>
+        <view class="item_box_money_btn">
+          <text bindtap="goDetail">立刻购买</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 按钮区域 -->
+  <view class="more_btn" bindtap="goDetail">
+    更多商品
+  </view>
+</view>
