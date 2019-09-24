@@ -10,15 +10,11 @@
   <view class="countDown">
     <view hidden="{{tabbar == 2}}">
       <text>距离开始</text>
-      <text class="time">{{hIng}}</text>时
-      <text class="time">{{mIng}}</text>分
-      <text class="time">{{sIng}}</text>秒
+      <text class="time">{{hIng}}</text>时<text class="time">{{mIng}}</text>分<text class="time">{{sIng}}</text>秒
     </view>
     <view hidden="{{tabbar == 1}}">
       <text>距离开始</text>
-      <text class="time">{{hStart}}</text>时
-      <text class="time">{{mStart}}</text>分
-      <text class="time">{{sStart}}</text>秒
+      <text class="time">{{hStart}}</text>时<text class="time">{{mStart}}</text>分<text class="time">{{sStart}}</text>秒
     </view>
   </view>
   <!-- 猫王秒杀内容 -->

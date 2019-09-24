@@ -187,7 +187,7 @@ page{
 .max_money_now{
   font-size:40rpx;
   font-weight:bold;
-  color:rgba(225,2,129,1);
+  color:#DF2054;
 }
 .max_money_icon{
   width: 16rpx;

@@ -16,7 +16,7 @@
 </block>
 <block wx:else="{{isFix}}">
   <view class='nav bg-white' style='height:{{navH}}px; background: {{background}};'>
-    <view class='nav-title' style='color: {{titleTexit}};'>
+    <view class='nav-title' style='color: {{titleTexit}};top: {{statusHeight}}px'>
       {{text}}
       <image src="{{backIcon == 1 ? '../../../image/back_white.png' : '../../../image/back.png'}}" mode='aspectFit' class='back' bindtap='navBack'></image> 
     </view>

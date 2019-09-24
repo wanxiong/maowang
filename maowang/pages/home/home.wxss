@@ -4,13 +4,22 @@ page{
 .box{
   background-color: #fff;
 }
+swiper{
+   height: 454rpx;
+}
+image{
+  display: block;
+}
+.inline-block{
+  display: inline-block;
+}
 .swiper image{
   display: block;
   width: 100%;
-  height: 320rpx;
+  height: 454rpx;
 }
 .link-menu{
-  padding: 20rpx;
+  padding: 40rpx 30rpx;
 }
 .link-menu > view:nth-of-type(1), .link-menu > view:nth-of-type(2){
   display: flex;
@@ -27,10 +36,11 @@ page{
   height: 90rpx;
 }
 .link-menu-ad{
-  padding: 0 20rpx;
+  padding: 0 30rpx;
+  margin-bottom: 2rpx;
 }
 .link-menu-ad image{
-  height: 300rpx;
+  height: 400rpx;
   width: 100%;
 }
 /* 猫王 */
@@ -42,10 +52,13 @@ page{
 }
 .MW .MW-MS,.MW .MW-PT{
   width: calc(50% - 5rpx);
-  padding:0px 20rpx; 
+  /* padding:0px 20rpx;  */
   background-color: #fff;
   font-size: 12px;
   box-sizing:border-box;
+}
+.MW .MW-MS > view,.MW .MW-PT > view {
+  padding: 0 20rpx;
 }
 .MW .MW-MS > view:nth-of-type(1),.MW .MW-PT > view:nth-of-type(1) {
   padding-top: 20rpx;
@@ -119,6 +132,7 @@ page{
 .MW-sub-ad{
   padding-top: 10rpx;
   background-color: #f3f0f1;
+  margin-bottom: 2rpx;
 }
 .MW-sub-ad image{
   width: 100%;
@@ -127,7 +141,7 @@ page{
 .money {
   position: fixed;
   right: 0;
-  top: 30%;
+  bottom: 360rpx;
   z-index: 99;
   
 }
@@ -177,6 +191,9 @@ page{
   margin-left: 10rpx;
 }
 .Scan{
+  position: fixed;
+  right: 20px;
+  bottom: 260rpx;
   width: 80rpx;
   height: 80rpx;
   background:rgba(255,255,255,1);
@@ -185,6 +202,7 @@ page{
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 99;
 }
 .Scan image{
   width: 36rpx;
@@ -231,6 +249,9 @@ page{
   width: 32rpx;
   height: 32rpx;
   margin-right: 20rpx;
+}
+.home_more_banner{
+  margin-bottom: 2rpx;
 }
 .home_more_banner image{
   width: 100%;
@@ -328,6 +349,16 @@ page{
   color:rgba(153,153,153,1);
   display: flex;
   justify-content: center;
+  position: relative;
+  padding: 0 30rpx;
+}
+.item_shop_count_line{
+  position: absolute;
+  width: 100%;
+  height:1px;
+  left: 0;
+  bottom: 20rpx;
+  background-color: rgba(238,238,238,1);
 }
 .item_shop_count > view:nth-of-type(1) {
   margin-right: 30rpx;

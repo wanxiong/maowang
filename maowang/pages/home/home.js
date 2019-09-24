@@ -15,7 +15,7 @@ Page({
     opacity: 0,
     interval: 5000,
     duration: 1000,
-    indicatorDots: false,
+    indicatorDots: true,
     data: {},
     navH: 0,
     timer: '',

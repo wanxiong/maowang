@@ -4,9 +4,13 @@
   <view class="money" wx:if="{{showMoney}}">
     <image bindtap="openMoney" src="../../image/money.png" mode="aspectFill" />
   </view>
+  <!-- 二维码 -->
+  <view class="Scan" bindtap="scan">
+    <image src='../../image/scan.png'></image>
+  </view>
   <!-- 轮播区域 -->
   <view class='swiper'>
-    <swiper indicator-dots="{{indicatorDots}}"
+    <swiper indicator-dots="{{indicatorDots}}" indicator-color="rgba(255, 255, 255, .6)	" indicator-active-color="rgba(255, 255, 255, 1)"
     autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
     <block wx:for="{{data.ad_list}}" wx:key="{{item.id}}">
       <swiper-item>
@@ -84,7 +88,7 @@
           <view class='MW-MS-item' >
             <view><image src='../../image/MW-1-1.png' mode="aspectFill"></image></view>
             <view class='MW-MS-money'>
-              <image src='../../image/money_icon.png' mode='aspectFill'></image>
+              <image class="inline-block" src='../../image/money_icon.png' mode='aspectFill'></image>
               <text>{{item.promote_price}}</text>
             </view>
             <view class='MW-MS-money-del'>
@@ -107,9 +111,6 @@
       </view>
       <view class="default_pintuan">
         <text>{{data.pintuan.info && data.pintuan.info.start_sale}}</text>
-        <view class="Scan" bindtap="scan">
-          <image src='../../image/scan.png'></image>
-        </view>
       </view>
       <!-- 展示区域 -->
       <block wx:if="{{data.pintuan}}">
@@ -117,7 +118,7 @@
           <view class='MW-MS-item'>
             <view><image src='../../image/MW-2-2.png' mode='aspectFill'></image></view>
             <view class='MW-PT-money'>
-              <image src='../../image/money_icon.png' mode='aspectFill'></image>
+              <image src='../../image/money_icon.png' class="inline-block" mode='aspectFill'></image>
               <text>{{item.group_price}}</text>
             </view>
             <view class='MW-PT-money-del'>
@@ -161,7 +162,7 @@
           </view>
           <view class="item_box_title two_msg">{{item.goods_name}}</view>
           <view class="item_box_money">
-            <image class="money_icon_1" src="../../image/money_icon.png" mode="aspectFill"></image>
+            <image class="money_icon_1 inline-block" src="../../image/money_icon.png" mode="aspectFill"></image>
             <text>{{item.shop_price}}</text>
             <text>原价￥{{item.market_price}}</text>
           </view>
@@ -192,6 +193,7 @@
             <view class="item_shop_count">
               <view><text class="item_shop_count_text">销量</text><text>{{item.sale_num}}</text></view>
               <view><text class="item_shop_count_text">商品</text><text>{{item.goods_number}}</text></view>
+              <view class="item_shop_count_line"></view>
             </view>
             <view class="item_box_addre one_msg">{{item.supplier_address}}</view>
           </view>
