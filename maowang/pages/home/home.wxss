@@ -121,6 +121,8 @@ image{
   width: 100%;
   padding-top: 100%;
   position: relative;
+  padding-right: 0;
+  padding-left: 0;
 }
 .MW .MW-MS .MW-MS-money-img image, .MW .MW-PT .MW-PT-money-img image{
   position: absolute;
@@ -140,14 +142,14 @@ image{
 }
 .money {
   position: fixed;
-  right: 0;
-  bottom: 360rpx;
+  right: 20rpx;
+  bottom: 410rpx;
   z-index: 99;
   
 }
 .money  image{
-  width: 254rpx;
-  height: 320rpx;
+  width: 136rpx;
+  height: 139rpx;
 }
 .p-contain{
   position: absolute;
@@ -192,7 +194,7 @@ image{
 }
 .Scan{
   position: fixed;
-  right: 20px;
+  right: 20rpx;
   bottom: 260rpx;
   width: 80rpx;
   height: 80rpx;
@@ -336,13 +338,14 @@ image{
   width: 160rpx;
   height: 160rpx;
   border-radius: 50%;
+  display: inline-block;
 }
 .item_shop_name{
   font-size:28rpx;
   color:rgba(51,51,51,1);
   line-height:26rpx;
   text-align: center;
-  margin-bottom: 30rpx;
+  margin-bottom: 24rpx;
 }
 .item_shop_count{
   font-size:24rpx;
@@ -350,7 +353,7 @@ image{
   display: flex;
   justify-content: center;
   position: relative;
-  padding: 0 30rpx;
+  margin: 0 30rpx;
 }
 .item_shop_count_line{
   position: absolute;

@@ -4,15 +4,16 @@ Component({
     animateFlg: false,
     statusHeight: app.globalData.statusBarHeight,
     top: app.globalData.top,
-    inputWidth: app.globalData.inputWidth
+    inputWidth: app.globalData.inputWidth,
+    navH: app.globalData.navHeight
   },
   properties: {
-    navH: { // 属性名
-      type: String,
-      value: '',
-      observer: function (newVal, oldVal) {
-      }
-    },
+    // navH: { // 属性名
+    //   type: String,
+    //   value: '',
+    //   observer: function (newVal, oldVal) {
+    //   }
+    // },
     background: {
       type: String,
       value: '#fff',

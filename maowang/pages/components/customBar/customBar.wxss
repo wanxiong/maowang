@@ -72,6 +72,8 @@
 .nav-input input{
   height:32px;
   font-size: 26rpx;
+  text-align: left;
+  padding-left: 130rpx;
 }
 .placeholder-class{
    color: rgba(255, 255, 255, .8);

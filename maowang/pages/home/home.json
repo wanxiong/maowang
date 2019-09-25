@@ -1,4 +1,6 @@
 {
+  "enablePullDownRefresh":true,
+  "onReachBottomDistance": 30,
   "usingComponents": {
     "customBar": "../components/customBar/customBar",
     "popup": "../components/popup/popup"

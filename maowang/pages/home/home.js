@@ -71,12 +71,32 @@ Page({
   onUnload: function () {
 
   },
-  async initData () {
+  // 下拉刷新
+  onPullDownRefresh: function () {
+    this.initData(() => {
+      clearInterval(countTimer)
+      this.setData({
+        apiTwoPage: 1,
+        apiTwoPageData: [
+          '', '', '', ''
+        ],
+        apiThreePageData: {},
+        loadMoreFlag: false,
+        timer: ''
+      })
+      wx.stopPullDownRefresh()
+    })
+    this.initMoney()
+    this.initDataTwo(1);
+    
+  },
+  async initData (fn) {
     await api.showLoading() // 显示loading
     let { data } = await this.getList()  // 请求数据
     this.setData({
       data
     })
+    fn && fn()
     this.countDowm(data.promote_goods.promote_info.leave_sale_time)
     await api.hideLoading() // 等待请求数据成功后，隐藏loading
   },
@@ -203,6 +223,14 @@ Page({
       success(res) {
         console.log(res)
         if (res.errMsg === 'scanCode:ok') {
+          if (res.result.indexOf(app.testUrl) == -1 && res.result.indexOf(app.proUrl) == -1) {
+            wx.showToast({
+              title: '请选择猫王的二维码',
+              icon: 'none',
+              duration: 2000
+            })
+            return
+          }
           if (res.result.indexOf("?") != -1) {
             let para = res.result.split('?')[1]
             let type = params(para, 'type')

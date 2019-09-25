@@ -6,7 +6,7 @@ App({
     wx.getSystemInfo({
       success: res => {
         //导航高度
-        this.globalData.navHeight = res.statusBarHeight + 46;
+        // this.globalData.navHeight = res.statusBarHeight + 46;
         let bar = wx.getMenuButtonBoundingClientRect();
         let h = ''
         let top = 0
@@ -51,7 +51,9 @@ App({
     api: api,
     navHeight: 0
   },
-  baseUrl: 'https://mao.520haigo.com/', // 正式环境 https://api.caose.cn/  
+  baseUrl: 'https://mao.520haigo.com/', // 正式环境 https://api.caose.cn/
+  testUrl: 'https://mao.520haigo.com/',
+  proUrl: 'https://api.caose.cn/',
   baseUrlImage: 'https://api.caose.cn/shopapi/image/', // 正式环境   
   configApi: {
     homeApi: 'shopapi/index.php/first/indexOne', // 广告图、轮播图、秒杀、拼团
