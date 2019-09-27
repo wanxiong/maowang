@@ -10,7 +10,7 @@
   </view>
   <!-- 轮播区域 -->
   <view class='swiper'>
-    <swiper indicator-dots="{{indicatorDots}}" indicator-color="rgba(255, 255, 255, .6)	" indicator-active-color="rgba(255, 255, 255, 1)"
+    <swiper indicator-dots="{{indicatorDots}}" circular indicator-color="rgba(255, 255, 255, .6)	" indicator-active-color="rgba(255, 255, 255, 1)"
     autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
     <block wx:for="{{data.ad_list}}" wx:key="{{item.id}}">
       <swiper-item>
@@ -55,7 +55,7 @@
       </view>
       <view class='link-menu-icon'>
         <image src='../../image/item-8.png' mode="aspectFit"></image>
-        <view>入驻商</view>
+        <view>聚宝盆</view>
       </view>
       <view class='link-menu-icon'>
         <image src='../../image/item-9.png' mode="aspectFit"></image>

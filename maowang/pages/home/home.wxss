@@ -143,7 +143,7 @@ image{
 .money {
   position: fixed;
   right: 20rpx;
-  bottom: 410rpx;
+  bottom: 380rpx;
   z-index: 99;
   
 }

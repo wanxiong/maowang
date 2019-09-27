@@ -86,7 +86,6 @@ Page({
       })
       wx.stopPullDownRefresh()
     })
-    this.initMoney()
     this.initDataTwo(1);
     
   },
