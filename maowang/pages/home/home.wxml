@@ -179,8 +179,8 @@
           <image mode="aspectFill" src="../../image/home_icon.png"></image>
           <text>优选好店</text>
         </view>
-        <view class="home_more_banner" wx:if="{{apiThreePageData.shop.ad_url}}">
-          <image mode="aspectFill" src="{{apiThreePageData.shop.ad_url}}"></image>
+        <view class="home_more_banner" wx:if="{{apiThreePageData.app_supplier.ad_url}}">
+          <image mode="aspectFill" src="{{apiThreePageData.app_supplier.ad_url}}"></image>
         </view>
         <view class="home_more_product">
           <view wx:for="{{apiThreePageData.shop}}" wx:key="{{item.supplier_id}}">
