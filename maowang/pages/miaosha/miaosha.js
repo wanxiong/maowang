@@ -283,7 +283,7 @@ Page({
     let info = wx.getStorageSync('login_info');
     console.log(info)
     await api.showLoading() // 显示loading
-    api.getData(app.baseUrl + app.configApi.miaoShaRemind, {
+    api.postData(app.baseUrl + app.configApi.miaoShaRemind, {
       key: info.sesskey || '',
       ...params
     }).then((res) => {
