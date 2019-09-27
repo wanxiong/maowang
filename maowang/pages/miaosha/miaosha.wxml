@@ -42,7 +42,7 @@
               <text class="pro-text">{{item.proportionCustom < 90 ? '已抢'+ item.proportionCustom + '%' : '即将抢完'}}</text>
             </view>
             <!-- 去拼团 -->
-            <button class="btnIng" >
+            <button class="btnIng" bindtap='goDetail' >
               <text>马上抢</text>
               <image class="" src='../../image/right_sm.png' mode="aspectFit"></image>
             </button>

@@ -13,7 +13,7 @@ Page({
   data: {
     autoplay: true,
     opacity: 0,
-    interval: 5000,
+    interval: 3000,
     duration: 1000,
     indicatorDots: true,
     data: {},

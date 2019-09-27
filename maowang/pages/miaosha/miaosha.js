@@ -315,5 +315,10 @@ Page({
       goods_id,
       form_id: e.detail.formId
     }, index)
+  },
+  goDetail (e) {
+    wx.showToast({
+      title: '此功能暂未开发',
+    })
   }
 })
