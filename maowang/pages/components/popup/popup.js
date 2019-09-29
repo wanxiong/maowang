@@ -53,6 +53,9 @@ Component({
       console.log('点击关闭按钮')
       this.hideBox()
       this.triggerEvent('closePop','')
+    },
+    onPreventTouchMove() {
+      
     }
     
   }

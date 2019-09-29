@@ -1,0 +1,10 @@
+<view class="loadEffect" wx:if="{{show}}">
+    <text></text>
+    <text></text>
+    <text></text>
+    <text></text>
+    <text></text>
+    <text></text>
+    <text></text>
+    <text></text>
+</view>

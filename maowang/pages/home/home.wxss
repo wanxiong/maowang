@@ -1,3 +1,5 @@
+@import '../../app.wxss';
+
 page{
   background-color: #f3f0f1;
 }
@@ -34,13 +36,13 @@ image{
 .link-menu view .link-menu-icon > image{
   width: 90rpx;
   height: 90rpx;
+  margin-bottom: 14rpx;
 }
 .link-menu-ad{
-  padding: 0 30rpx;
   margin-bottom: 2rpx;
 }
 .link-menu-ad image{
-  height: 400rpx;
+  height: 200rpx;
   width: 100%;
 }
 /* 猫王 */
@@ -185,6 +187,8 @@ image{
   font-size: 110rpx;
   font-weight:600;
   color:rgba(223,32,84,1);
+  display: flex;
+  align-items: baseline;
 
 }
 .money_icon{

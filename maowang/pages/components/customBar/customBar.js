@@ -5,7 +5,10 @@ Component({
     statusHeight: app.globalData.statusBarHeight,
     top: app.globalData.top,
     inputWidth: app.globalData.inputWidth,
-    navH: app.globalData.navHeight
+    navH: app.globalData.navHeight,
+    right: app.globalSystem.screenWidth - app.globalMenuBound.right,
+    rightSan: (app.globalMenuBound.width / 2) + (app.globalMenuBound.width / 4) - 10,
+    showSave: true
   },
   properties: {
     // navH: { // 属性名
@@ -56,6 +59,11 @@ Component({
     },
     myQrcode() {
       this.triggerEvent('onChangeQrcode');
+    },
+    closeSave() {
+      this.setData({
+        showSave: false
+      })
     }
   }
 

@@ -51,3 +51,7 @@
     </view>
   </view>
 </popup>
+
+<canvas canvas-id="myCanvas" style="width: 690px;height:1085px;">
+
+</canvas>

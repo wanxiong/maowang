@@ -1,8 +1,10 @@
 {
   "enablePullDownRefresh":true,
   "onReachBottomDistance": 30,
+  "backgroundTextStyle": "dark",
   "usingComponents": {
     "customBar": "../components/customBar/customBar",
-    "popup": "../components/popup/popup"
+    "popup": "../components/popup/popup",
+    "loadmore":"../components/loadmore/loadmore"
   }
 }

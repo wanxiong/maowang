@@ -54,7 +54,7 @@
         <view>猫王品牌</view>
       </view>
       <view class='link-menu-icon'>
-        <image src='../../image/item-8.png' mode="aspectFit"></image>
+        <image src='../../image/item-11.png' mode="aspectFit"></image>
         <view>聚宝盆</view>
       </view>
       <view class='link-menu-icon'>
@@ -69,7 +69,7 @@
   </view>
   <!-- 菜单下方--广---告 -->
   <view class='link-menu-ad' wx:if="{{data.menu_bottom_ad && data.menu_bottom_ad.ad_url}}">
-    <image mode="aspectFill" data-json="{{data.app_bottom_ad}}" bindtap='taplink' data="{{data.menu_bottom_ad}}" src="{{data.menu_bottom_ad ? data.menu_bottom_ad.ad_url: ''}}"></image>
+    <image mode="aspectFill" data-json="{{data.app_bottom_ad}}"  data="{{data.menu_bottom_ad}}" src="{{data.menu_bottom_ad ? data.menu_bottom_ad.ad_url: ''}}"></image>
   </view>
   <!-- 猫王秒杀 拼团 -->
   <view class='MW'>
@@ -77,7 +77,7 @@
     <view class='MW-MS'>
       <view>
         <image src='../../image/MW-1.png'></image>
-        <text>更多</text>
+        <text bindtap="goMiaoSha">更多</text>
       </view>
       <view class="default_miaosha">
         <text>{{data.promote_goods.promote_info && data.promote_goods.promote_info.start_sale}}</text>
@@ -222,19 +222,13 @@
     </block>
     <!-- 大牌专区结束 -->
     <!-- 没有更多咯开始 -->
-    
-    <view class="no_more" wx:if="{{loadMoreFlag}}">
-      <text>没有更多咯~</text>
-    </view>
-    
+    <loadmore show="{{loadMoreFlag}}"></loadmore>
     <!-- 没有更多咯结束 -->
 </view>
 
 
-
-
 <!--  领奖界面  -->
-<popup show="{{isShow}}" bind:closePop="closePop" style_in='fadeIn' style_out='fadeOut'  bind:animaEnd="animaEnd" class="changeAward">
+<popup show="{{isShow}}" trigger="{{true}}" bind:closePop="closePop" style_in='fadeIn' style_out='fadeOut'  bind:animaEnd="animaEnd" class="changeAward">
   <view class='p-contain' catchtap='maxStartPla'>
     <view class="close_icon"></view>
     <view class="money_link">

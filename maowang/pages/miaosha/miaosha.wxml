@@ -7,24 +7,33 @@
     <text class="border"></text>
   </view>
   <!-- 倒计时区域 -->
-  <view class="countDown">
-    <view hidden="{{tabbar == 2}}">
-      <text>距离开始</text>
-      <text class="time">{{hIng}}</text>时<text class="time">{{mIng}}</text>分<text class="time">{{sIng}}</text>秒
-    </view>
-    <view hidden="{{tabbar == 1}}">
-      <text>距离开始</text>
-      <text class="time">{{hStart}}</text>时<text class="time">{{mStart}}</text>分<text class="time">{{sStart}}</text>秒
-    </view>
-  </view>
+  
+    <block wx:if="{{ingData.length}}">
+      <view class="countDown" hidden="{{tabbar == 2}}">
+        <view >
+          <text>距结束</text>
+          <text class="time">{{hIng}}</text>时<text class="time">{{mIng}}</text>分<text class="time">{{sIng}}</text>秒
+        </view>
+      </view>
+    </block>
+    <block wx:if="{{startData.length}}">
+      <view class="countDown"  hidden="{{tabbar == 1}}">
+        <view>
+          <text>距离开始</text>
+          <text class="time">{{hStart}}</text>时<text class="time">{{mStart}}</text>分<text class="time">{{sStart}}</text>秒
+        </view>
+      </view>
+    </block>
+  
   <!-- 猫王秒杀内容 -->
   <view class="contain">
     <!-- 正在秒杀 -->
     <block wx:if="{{tabbar == 1}}">
+      <view class="no_data" wx:if="{{!ingData.length && !loadMoreFirstLeft}}">暂无数据哦</view>
       <view class='miaosha_item' wx:for="{{ingData}}" wx:key="{{item.goods_id}}">
         <view class="product">
           <image class="img" src='{{item.goods_thumb}}' mode="aspectFit"></image>
-          <image wx:if="{{item.supplier_id}}" class="icon" src='../../image/self_support.png' mode="aspectFit"></image>
+          <image wx:if="{{item.supplier_id == '0' ? true : false}}" class="icon" src='../../image/self_support.png' mode="aspectFit"></image>
         </view>
         <view class="product_text">
           <view>
@@ -44,18 +53,20 @@
             <!-- 去拼团 -->
             <button class="btnIng" bindtap='goDetail' >
               <text>马上抢</text>
-              <image class="" src='../../image/right_sm.png' mode="aspectFit"></image>
             </button>
           </view>
         </view>
       </view>
+      <!-- loadmore -->
+      <loadmore show="{{loadmoreLeft && !loadMoreFirstLeft}}"></loadmore>
     </block>
     <!-- 即将开始 -->
     <block wx:if="{{tabbar == 2}}">
+      <view class="no_data" wx:if="{{!startData.length && !loadMoreFirstRight}}">暂无数据哦</view>
       <view class='miaosha_item' wx:for="{{startData}}" wx:key="{{item.goods_id}}">
         <view class="product">
           <image class="img" src='{{item.goods_thumb}}' mode="aspectFit"></image>
-          <image wx:if="{{item.supplier_id}}" class="icon" src='../../image/self_support.png' mode="aspectFit"></image>
+          <image wx:if="{{item.supplier_id == '0' ? true : false}}" class="icon" src='../../image/self_support.png' mode="aspectFit"></image>
         </view>
         <view class="product_text">
           <view>
@@ -74,12 +85,19 @@
             <form bindsubmit="{{ item.is_send == 1 ? '': 'startRemind'}}" data-index="{{index}}" report-submit data-json="{{item}}">
             <button form-type="submit" class="{{item.is_send == 1 ? 'btn active' : 'btn'}}" >
               <text>{{item.is_send == 1 ? '已预约' : '提醒我'}}</text>
-              <image class="" src='../../image/right_sm.png' mode="aspectFit"></image>
             </button>
             </form>
           </view>
         </view>
       </view>
+      <!-- loadmore -->
+      <loadmore show="{{loadmoreRight && !loadMoreFirstRight}}"></loadmore>
     </block>
   </view>
 </view>
+
+
+<!-- loading -->
+<loading class='loadingTip' oneText="{{oneText}}" twoText="{{twoText}}"></loading>
+
+

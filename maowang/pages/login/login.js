@@ -11,7 +11,8 @@ Page({
     navH: 0,
     params: false,
     text: '',
-    shareInfo: {}
+    shareInfo: {},
+    isBack: 0
   },
 
   /**
@@ -22,6 +23,10 @@ Page({
       navH: app.globalData.navHeight
     })
     //  是否微信扫码过来的
+    console.log(options)
+    if (options.isBack == '1') {
+      this.setData({ isBack: 1})
+    }
     let shareId = ''
     if (options.q) {
       let url = decodeURIComponent(options.q);
@@ -73,9 +78,12 @@ Page({
   },
 
   onChangeNavBack() {
-    wx.switchTab({
-      url: '/pages/home/home'
+    wx.navigateBack({
+      delta: 1
     })
+    // wx.switchTab({
+    //   url: '/pages/home/home'
+    // })
   },
 
   goPhone() {
@@ -121,9 +129,16 @@ Page({
           duration: 2000
         })
         setTimeout(() => {
-          wx.switchTab({
-            url: '/pages/home/home'
-          })
+          if (this.data.isBack == '0') {
+            wx.switchTab({
+              url: '/pages/home/home'
+            })
+          } else {
+            wx.navigateBack({
+              delta: 1
+            })
+          }
+          
         }, 2000)
       } else if (res.code == 200 && res.data.status == 0) {
         if (this.data.params) {

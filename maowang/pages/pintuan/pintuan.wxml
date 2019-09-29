@@ -1,6 +1,6 @@
 <customBar navH="{{navH}}" isFix="{{false}}"  bind:onChangeNavBack="onChangeNavBack" backIcon="{{1}}" titleTexit='#fff' background='linear-gradient(90deg,rgba(225,2,129,1) 0%,rgba(238,37,63,1) 100%)' text='猫王拼团'/>
 <view class="contain">
-  <view wx:for="{{data}}">
+  <view wx:for="{{data}}" wx:key="{{item.group_id}}">
     <view class="product">
       <image class="img" src='{{item.goods_thumb_url}}' mode="aspectFit"></image>
       <image wx:if="{{item.supplier_id == 0}}" class="icon" src='../../image/self_support.png' mode="aspectFit"></image>
@@ -32,4 +32,5 @@
       </view>
     </view>
   </view>
+  <loadmore show="{{loadMoreFlag}}"></loadmore>
 </view>

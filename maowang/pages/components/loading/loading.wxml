@@ -1,0 +1,11 @@
+<view class="max-con" style="display:{{status ? 'block' : 'none'}};">
+  <view class="modal">
+    <view class="btm">
+      <image src="/image/icon_am.png" mode="aspectFill" style="width: 10rpx;height: 47rpx;"></image>
+        <view class="text">
+          <view >{{oneText}}</view>
+          <view>{{twoText}}</view>
+        </view>
+    </view>
+  </view>
+</view>

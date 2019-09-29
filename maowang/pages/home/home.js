@@ -22,7 +22,7 @@ Page({
     isShow: false,
     shareMoney: 0,
     showMoney: false,
-    apiTwoPage: 1, // 1 2 3 4第二个API  56第3个API， 789没有了
+    apiTwoPage: 0, // 1 2 3 4第二个API  56第3个API， 789没有了
     apiTwoPageData: [
       '','','',''
     ],
@@ -39,9 +39,6 @@ Page({
     this.setData({
       navH: app.globalData.navHeight
     })
-    this.initData()
-    this.initMoney()
-    this.initDataTwo(this.data.apiTwoPage);
   },
 
   /**
@@ -49,6 +46,9 @@ Page({
    */
   onReady: function () {
     this.popUp = this.selectComponent(".changeAward");
+    this.initData()
+    this.initMoney()
+    // this.initDataTwo(this.data.apiTwoPage);
   },
 
   /**
@@ -76,7 +76,7 @@ Page({
     this.initData(() => {
       clearInterval(countTimer)
       this.setData({
-        apiTwoPage: 1,
+        apiTwoPage: 0,
         apiTwoPageData: [
           '', '', '', ''
         ],
@@ -86,7 +86,7 @@ Page({
       })
       wx.stopPullDownRefresh()
     })
-    this.initDataTwo(1);
+    // this.initDataTwo(1);
     
   },
   async initData (fn) {
@@ -96,7 +96,9 @@ Page({
       data
     })
     fn && fn()
-    this.countDowm(data.promote_goods.promote_info.leave_sale_time)
+    if (data.promote_goods.promote_data.length) {
+      this.countDowm(data.promote_goods.promote_info.leave_sale_time)
+    }
     await api.hideLoading() // 等待请求数据成功后，隐藏loading
   },
   getList (parans = {}) {
@@ -266,7 +268,10 @@ Page({
   // 获取商城商品 自主品牌 商家商品  置换专区
   async initDataTwo (page) {
     let info = wx.getStorageSync('login_info');
-    await api.showLoading() // 显示loading
+    // await api.showLoading() // 显示loading
+    this.setData({
+      loadMoreFlag: true
+    })
     api.getData(app.baseUrl + app.configApi.homeApiTwo, {
       key: info && info.sesskey || '',
       cur_page: page
@@ -275,31 +280,41 @@ Page({
       let data = this.data.apiTwoPageData;
       data[page] = res.data;
       this.setData({
-        apiTwoPageData: data
+        apiTwoPageData: data,
+        loadMoreFlag: false
       })
-      api.hideLoading() // 等待请求数据成功后，隐藏loading
+      // api.hideLoading() // 等待请求数据成功后，隐藏loading
     })
     .catch((err) => {
       console.error(err)
-      api.hideLoading() // 等待请求数据成功后，隐藏loading
+      this.setData({
+        loadMoreFlag: false
+      })
+      // api.hideLoading() // 等待请求数据成功后，隐藏loading
     })
   },
   // 获取大牌专区，优选好店
   async initDataThree(page) {
     let info = wx.getStorageSync('login_info');
-    await api.showLoading() // 显示loading
+    // await api.showLoading() // 显示loading
+    this.setData({
+      loadMoreFlag: true
+    })
     api.getData(app.baseUrl + app.configApi.homeApiThree, {
       key: info && info.sesskey || ''
     }).then((res) => {
-      console.log(res)
       this.setData({
-        apiThreePageData: res.data
+        apiThreePageData: res.data,
+        loadMoreFlag: false
       })
-      api.hideLoading() // 等待请求数据成功后，隐藏loading
+      // api.hideLoading() // 等待请求数据成功后，隐藏loading
     })
       .catch((err) => {
         console.error(err)
-        api.hideLoading() // 等待请求数据成功后，隐藏loading
+        this.setData({
+          loadMoreFlag: false
+        })
+        // api.hideLoading() // 等待请求数据成功后，隐藏loading
       })
   },
   
@@ -310,9 +325,6 @@ Page({
     let num = this.data.apiTwoPage;
     num++;
     if (num >= 6) {
-      this.setData({
-        loadMoreFlag: true
-      })
       return false
     }
     this.setData({

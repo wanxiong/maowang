@@ -9,7 +9,11 @@ Page({
    */
   data: {
     navH: 0,
-    data: []
+    data: [],
+    pageSize: 10,
+    page: 1,
+    loadmore: false,
+    loadMoreFlag: false,
   },
 
   /**
@@ -25,7 +29,10 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.initList()
+    this.initList({
+      per_page: this.data.pageSize,
+      cur_page: 1
+    })
   },
 
   /**
@@ -49,24 +56,33 @@ Page({
 
   },
 
-  async initList () {
+  async initList (params, loadmore = false, fn) {
     let info = wx.getStorageSync('login_info');
-    await api.showLoading()
+    this.setData({ loadMoreFlag: true})
     api.getData(app.baseUrl + app.configApi.pinTuanList, {
       key: info && info.sesskey || '',
-      keyword: ''
+      keyword: '',
+      ...params
     }).then((res) => {
       api.hideLoading()
       if (res.code == 200) {
         api.hideLoading()
+        let arr = this.data.data.concat(res.data.list)
+        let flag = res.hasmore
+        if (loadmore) {
+          arr = [].concat(res.data.list)
+        }
         this.setData({
-          data: res.data.list
+          data: arr,
+          loadmore: flag,
+          loadMoreFlag: false
         })
       }
+      fn && fn()
     })
     .catch((err) => {
       console.error(err)
-      api.hideLoading()
+      this.setData({ loadMoreFlag: true})
     })
   },
 
@@ -83,5 +99,32 @@ Page({
       duration: 2000,
       icon: 'none'
     })
-  }
+  },
+  onPullDownRefresh: function () {
+    this.setData({
+      page: 1
+    })
+    this.initList({
+      per_page: this.data.pageSize,
+      cur_page: 1
+    }, true, () => {
+      wx.stopPullDownRefresh()
+    })
+  },
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+    if (!this.data.loadmore) return;
+    let num = this.data.page;
+    num++;
+    this.setData({
+      page: num
+    })
+    this.initList({
+      per_page: this.data.pageSize,
+      cur_page: num
+    })
+
+  },
 })

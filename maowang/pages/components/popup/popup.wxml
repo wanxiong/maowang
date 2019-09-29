@@ -1,4 +1,4 @@
-<view wx:if="{{animateFlg}}">
+<view wx:if="{{animateFlg}}" catchtouchmove="onPreventTouchMove">
   <view  class='popup-box'>
     <view class="ps  {{show ? 'animated ' + style_in : 'animated ' + style_out}}" catchtap="{{trigger ? '' : 'triggerClose'}}" animationend="popAniendState">
       <slot></slot>

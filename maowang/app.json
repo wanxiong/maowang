@@ -14,7 +14,9 @@
     "pages/login/phoneAuth/phoneAuth",
     "pages/shareMy/shareMy",
     "pages/newPeople/newPeople",
-    "pages/miaosha/miaosha"
+    "pages/miaosha/miaosha",
+    "pages/components/loading/loading",
+    "pages/components/loadmore/loadmore"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -36,22 +38,22 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/my/my",
+        "pagePath": "pages/classification/classification",
         "iconPath": "image/icon-2.png",
         "selectedIconPath": "image/icon-2-active.png",
         "text": "分类"
       },
       {
-        "pagePath": "pages/my/my",
+        "pagePath": "pages/cart/cart",
         "iconPath": "image/icon-3.png",
         "selectedIconPath": "image/icon-3-active.png",
         "text": "购物车"
       },
       {
-        "pagePath": "pages/my/my",
+        "pagePath": "pages/merchant/merchant",
         "iconPath": "image/icon-4.png",
         "selectedIconPath": "image/icon-4-active.png",
-        "text": "聚宝盆"
+        "text": "入驻商"
       },
       {
         "pagePath": "pages/my/my",

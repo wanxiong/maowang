@@ -12,6 +12,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    oneText: "www",
+    twoText: 'aaa',
     navH: 0,
     tabbar: 1, // 1 正在抢购 2 即将开抢
     startData: [],
@@ -24,10 +26,14 @@ Page({
     hIng: '--',
     page: 1, // 秒杀中
     page2: 1, // 即将开始
-    pageSize: 2,
+    pageSize: 10,
     pageSize2: 10,
     leftFlag: true,
-    rightFlag: true
+    rightFlag: true,
+    loadmoreLeft: false,
+    loadmoreRight: false,
+    loadMoreFirstLeft: true,
+    loadMoreFirstRight: true
   },
 
   /**
@@ -43,6 +49,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    this.loadingTip = this.selectComponent(".loadingTip");
     this.initData(1, 'left', {
       per_page: this.data.pageSize,
       cur_page: this.data.page
@@ -79,7 +86,6 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    console.log(111)
     if (this.data.tabbar == 1) { // 左边 正在秒杀
       if (!this.data.leftFlag) {
         return
@@ -100,15 +106,55 @@ Page({
       this.setData({
         page: pag
       })
-      this.initData(1, 'left', {
+      this.initData(2, 'right', {
         per_page: this.data.pageSize2,
         cur_page: pag
       })
     }
   },
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+    clearInterval(timerRight)
+    clearInterval(timer)
+  },
+  // 下拉刷新
+  onPullDownRefresh: function () {
+    if (this.data.tabbar == 1) { // 左边 正在秒杀
+      this.initData(1, 'left', {
+        per_page: this.data.pageSize,
+        cur_page: 1
+      }, true, () => {
+        clearInterval(timer)
+        this.setData({
+          page: 1,
+          page2: 1,
+          mIng: '--',
+          sIng: '--',
+          hIng: '--'
+        })
+        wx.stopPullDownRefresh()
+      })
+    } else { // 右边 即将开始
+      this.initData(2, 'right', {
+        per_page: this.data.pageSize2,
+        cur_page: 1
+      }, true, () => {
+        clearInterval(timerRight)
+        this.setData({
+          page: 1,
+          page2: 1,
+          mStart: '--',
+          sStart: '--',
+          hStart: '--'
+        })
+        wx.stopPullDownRefresh()
+      })
+    }
+  },
   // tabbar 切换
   switchBar(e) {
-    console.log(e)
     if (this.data.tabbar == e.currentTarget.dataset.index) {
       return
     } else if (e.currentTarget.dataset.index == 1) {
@@ -128,16 +174,21 @@ Page({
       detail: -1
     })
   },
-  async initData(order, type, params, initDataFlag = false) {
+  async initData(order, type, params, initDataFlag = false, fn) {
     let info = wx.getStorageSync('login_info');
-    await api.showLoading() // 显示loading
+    // await api.showLoading() // 显示loading
+    if (type === 'left') {
+      this.setData({ loadmoreLeft: true})
+    } else {
+      this.setData({ loadmoreRight: true })
+    }
     api.getData(app.baseUrl + app.configApi.miaoShaList, {
       key: info.sesskey || '',
       order: order,
       ...params
     }).then((res) => {
-      console.log(res)
       if (res.code == 200) {
+        fn && fn()
         if (type === 'left') {
           let origin = this.data.ingData;
           let flag = res.hasmore
@@ -157,7 +208,8 @@ Page({
           let arrAnimate = originAnimate.concat(newArr);
           this.setData({
             ingData: arr,
-            leftFlag: flag
+            leftFlag: flag,
+            loadMoreFirstLeft: false,
           })
           setTimeout(() => {
             this.setData({
@@ -168,12 +220,12 @@ Page({
           let arr = this.data.startData.concat(res.data)
           let flag = res.hasmore
           if (initDataFlag) {
-            arr = [];
+            arr = [].concat(res.data)
           }
-          arr.concat(res.data)
           this.setData({
             startData: arr,
-            rightFlag: flag
+            rightFlag: flag,
+            loadMoreFirstRight: false
           })
 
         }
@@ -190,16 +242,17 @@ Page({
         }
 
       }
-      api.hideLoading() // 等待请求数据成功后，隐藏loading
+      // api.hideLoading() // 等待请求数据成功后，隐藏loading
+      this.setData({ loadmoreLeft: false, loadmoreRight: false })
     })
     .catch((err) => {
       console.error(err)
+      this.setData({ loadmoreLeft: false, loadmoreRight: false })
       api.hideLoading() // 等待请求数据成功后，隐藏loading
     })
   },
   // s是否倒计时
   checkCountDown (type) {
-    console.log(type)
     if (type === 'left' && this.data.page == 1 && this.data.ingData.length) {
       let data = this.data.ingData[0];
       let timerStamp = data.promote_end_date - data.now_time;
@@ -218,27 +271,42 @@ Page({
       if (time <= 0) {
         if (type === 'left') {
           clearInterval(timer)
+          this.initData(1, 'left', {
+            per_page: this.data.pageSize,
+            cur_page: 1
+          }, true)
+          this.setData({
+            page: 1,
+            mIng: '--',
+            sIng: '--',
+            hIng: '--'
+          })
         } else {
           clearInterval(timerRight)
+          clearInterval(timer)
+          this.initData(2, 'right', {
+            per_page: this.data.pageSize2,
+            cur_page: 1
+          }, true, () => {
+            this.setData({
+              page: 1,
+              mStart: '--',
+              sStart: '--',
+              hStart: '--'
+            })
+          })
+          this.initData(1, 'left', {
+            per_page: this.data.pageSize,
+            cur_page: 1
+          }, true, () => {
+            this.setData({
+              page: 1,
+              mIng: '--',
+              sIng: '--',
+              hIng: '--'
+            })
+          })
         }
-        this.setData({
-          page: 1,
-          page2: 1,
-          mIng: '--',
-          sIng: '--',
-          hIng: '--',
-          mStart: '--',
-          sStart: '--',
-          hStart: '--'
-        })
-        this.initData(1, 'left', {
-          per_page: this.data.pageSize,
-          cur_page: 1
-        }, true)
-        this.initData(2, 'right', {
-          per_page: this.data.pageSize2,
-          cur_page: 1
-        }, true)
       }
       let minutes = parseInt(time / timeNum / 60 % 60, 10);//计算剩余的分钟
       let seconds = parseInt(time / timeNum % 60, 10);//计算剩余的秒数
@@ -254,7 +322,9 @@ Page({
           hIng: hours,
         })
       } else {
-        console.log(minutes)
+        // if (minutes == '05' && seconds == '00' && this.data.tabbar == 2) {
+        //   this.loadingTip.show()
+        // }
         this.setData({
           mStart: minutes,
           sStart: seconds,
@@ -281,25 +351,37 @@ Page({
   async initRemind(params, index) {
     console.log(params)
     let info = wx.getStorageSync('login_info');
-    console.log(info)
     await api.showLoading() // 显示loading
     api.postData(app.baseUrl + app.configApi.miaoShaRemind, {
       key: info.sesskey || '',
+      hideLoading: true,
       ...params
-    }).then((res) => {
-      console.log(res)
+    }, {isBack: 1}).then(async (res) => {
       if (res.code == 200) {
+        console.log(222)
         wx.showToast({
           title: res.msg,
+          icon: 'none',
+          duration: 2000
         })
         let item = this.data.startData;
-        item[0].is_send = 1;
+        item[index].is_send = 1;
         this.setData({
           startData: item
         })
+      } else if (res.code == 400){
+        console.log(res.msg.split(',')[0])
+        this.setData({
+          oneText: res.msg.split(',')[0],
+          twoText: res.msg.split(',')[1]
+        })
+        this.loadingTip.show()
+        await api.hideLoading() // 等待请求数据成功后，隐藏loading
       } else {
+        await api.hideLoading() // 等待请求数据成功后，隐藏loading
       }
-      api.hideLoading() // 等待请求数据成功后，隐藏loading
+      
+      
     })
       .catch((err) => {
         console.error(err)
@@ -307,13 +389,12 @@ Page({
       })
   },
   startRemind (e) {
-    console.log(e)
     let json = e.currentTarget.dataset.json;
     let index = e.currentTarget.dataset.index;
     const { goods_id } = json
     this.initRemind({
       goods_id,
-      form_id: e.detail.formId
+      form_id: e.detail.formId,
     }, index)
   },
   goDetail (e) {

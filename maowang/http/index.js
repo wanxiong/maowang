@@ -23,7 +23,7 @@ const getData = (url, param) => {
 }
 
 // request post 请求
-const postData = (url, param) => {
+const postData = (url, param, custom = {}) => {
   return new Promise((resolve, reject) => {
     wx.request({
       url: url,
@@ -33,10 +33,12 @@ const postData = (url, param) => {
       },
       data: param,
       success(res) {
-        console.log(res)
-        
-        if (res.data.code != 200) {
-          if(!param.hideLoading) {
+        if (res.data.code ==  403) {
+          wx.navigateTo({
+            url: '/pages/login/login?isBack=' + (custom.isBack || 0),
+          })
+        } else if (res.data.code != 200) {
+          if (!param.hideLoading) {
             wx.showToast({
               title: res.data.msg,
               icon: 'none',

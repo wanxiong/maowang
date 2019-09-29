@@ -8,6 +8,7 @@ App({
         //导航高度
         // this.globalData.navHeight = res.statusBarHeight + 46;
         let bar = wx.getMenuButtonBoundingClientRect();
+        let globalSystem = res = wx.getSystemInfoSync();
         let h = ''
         let top = 0
         if (res.system.indexOf('iOS') > -1) {
@@ -21,6 +22,10 @@ App({
         this.globalData.statusBarHeight = res.statusBarHeight;
         this.globalData.top = top;
         this.globalData.inputWidth = bar.left - 30 -10;
+        this.globalMenuBound = bar;
+        this.globalSystem = globalSystem;
+        console.log(this.globalMenuBound)
+        console.log(this.globalSystem)
       }, fail(err) {
         console.log(err);
       }
