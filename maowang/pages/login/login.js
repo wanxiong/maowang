@@ -23,6 +23,7 @@ Page({
       navH: app.globalData.navHeight
     })
     //  是否微信扫码过来的
+    console.log('是否有参数~~~~~~~~~~~~~~~~~')
     console.log(options)
     if (options.isBack == '1') {
       this.setData({ isBack: 1})
@@ -30,14 +31,16 @@ Page({
     let shareId = ''
     if (options.q) {
       let url = decodeURIComponent(options.q);
+      console.log(url)
       if (url.indexOf('?') != -1) {
         let share = params(url.split('?')[1], 'u');
         shareId = share;
+        console.log(shareId)
       }
     }
     //
     if (options.share || shareId) {
-      this.setData({ text: options.share, params: true})
+      this.setData({ text: options.share || shareId, params: true})
       this.getShare()
     }
   },
@@ -78,9 +81,15 @@ Page({
   },
 
   onChangeNavBack() {
-    wx.navigateBack({
-      delta: 1
-    })
+    if (this.data.isBack == '1' ) {
+      wx.navigateBack({
+        delta: 1
+      })
+    } else {
+      wx.switchTab({
+        url: '/pages/home/home'
+      })
+    }
     // wx.switchTab({
     //   url: '/pages/home/home'
     // })
