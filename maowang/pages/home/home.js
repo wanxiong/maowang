@@ -4,6 +4,7 @@ const api = app.globalData.api
 const regeneratorRuntime = require('../../lib/regenerator-runtime/runtime-module.js');
 import { params } from '../../utils/util.js'
 
+
 let countTimer = ''
 Page({
 
@@ -30,6 +31,12 @@ Page({
        // 大牌专区 优选好店
     },
     loadMoreFlag: false, //全部架子完毕
+    moneyFlagModal: false,
+    showAnimate: false,
+    position: {
+      x: 0,
+      y: 0
+    },
   },
 
   /**
@@ -151,17 +158,41 @@ Page({
     }
   },
   // 打开领钱弹出层
-  openMoney () {
-    this.popUp.openBox()
-    this.setData({
-      showMoney: false
-    })
+  openMoney (e) {
+    console.log(e)
+    if (!e) {
+      this.setData({
+        position: {
+          x: (app.globalSystem.screenWidth - 10 - 68) + 120 + 34 - (app.globalSystem.screenWidth/2) + 'px',
+          y: (app.globalSystem.screenHeight - 190 - 68) - (app.globalSystem.screenHeight / 2) + 165 + 34 + 'px'
+        }
+      })
+    } else {
+      this.setData({
+        position: {
+          x: e.currentTarget.offsetLeft + 120 + 34 - (app.globalSystem.screenWidth/2) + 'px',
+          y: e.currentTarget.offsetTop - (app.globalSystem.screenHeight / 2) + 165 + 34 + 'px'
+        }
+      })
+    }
+    setTimeout(() => {
+      this.setData({
+        moneyFlagModal: true,
+        showAnimate: true,
+        showMoney: false
+      })
+    }, 200)
   },
   close_money() {
-    this.popUp.hideBox()
     this.setData({
-      showMoney: true,
+      showAnimate: false,
     })
+    setTimeout(() => {
+      this.setData({
+        moneyFlagModal: false,
+        showMoney: true
+      })
+    }, 200)
   },
 
   // 去分享页面
