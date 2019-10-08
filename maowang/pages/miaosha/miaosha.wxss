@@ -6,9 +6,9 @@ page{
     height: 80rpx;
     line-height: 80rpx;
     background:rgba(255,255,255,1);
-    box-shadow:0px 1px 2px 0px rgba(0, 0, 0, 0.2);
     display: flex;
     position: relative;
+    border-bottom: 1rpx solid #f3f0f1;
 }
 .tab_bar > view{
   width: 50%;
@@ -25,11 +25,13 @@ page{
   background-color: #DBD9DA;
   top: 50%;
 }
+.tab_bar > view{
+  position: relative;
+}
 .tab_bar > view > view{
   position: relative;
   height: 100%;
   display: inline-block;
-
 }
 .tab_bar > view > .border_red {
   display: none;
@@ -41,7 +43,7 @@ page{
 .tab_bar > view .ative .border_red{
   position: absolute;
   width: 100%;
-  bottom: 0px;
+  bottom: -1rpx;
   left: 0;
   background:linear-gradient(90deg,rgba(225,2,129,1) 0%,rgba(238,37,63,1) 100%);
   border-radius:3rpx;
@@ -66,10 +68,11 @@ page{
 .product{
   position: relative;
 }
-.product .img{
+.product > .img{
   width: 270rpx;
   height: 270rpx;
   position: relative;
+  display: block;
 }
 .hot{
   width: 24rpx;
@@ -78,53 +81,66 @@ page{
 }
 .product_text{
   width: 100%;
-  padding: 7rpx 20rpx 0;
+  padding: 7rpx 0 0 20rpx;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 .btn{
   position: absolute;
-  height:60rpx;
+  height:64rpx;
   background:linear-gradient(90deg,rgba(0,152,75,1) 0%,rgba(5,196,63,1) 100%);
-  border-radius:30rpx;
+  border-radius:32rpx;
   right: 0;
   color: #fff;
   font-size:28rpx;
   bottom: 10rpx;
   display: flex;
   align-items: center;
+  line-height: 64rpx;
+  width: 140rpx;
+  text-align: center;
 }
 .btnIng{
   position: absolute;
-  height:60rpx;
+  height:64rpx;
   background:linear-gradient(90deg,rgba(225,2,129,1) 0%,rgba(238,37,63,1) 100%);
-  border-radius:30rpx;
+  border-radius:32rpx;
   right: 0;
   color: #fff;
   font-size:28rpx;
   bottom: 10rpx;
   display: flex;
   align-items: center;
+  padding: 0px;
+  width: 140rpx;
+  justify-content: center;
+  line-height: 64rpx;
+
+}
+.btnIng image{
+  margin: initial;
 }
 .btn image, .btnIng image{
   width: 14rpx;
   height: 24rpx;
-  display: inline-block;
   margin-left: 9rpx;
 }
 .active{
   position: absolute;
-  height:60rpx;
+  height:64rpx;
   border:1px solid rgba(0,153,75,1);
   background: #fff;
-  border-radius:30rpx;
+  border-radius:32rpx;
   right: 0;
   color:rgba(0,153,75,1);
   font-size:28rpx;
   bottom: 10rpx;
   display: flex;
   align-items: center;
+  padding: 0px;
+  justify-content: center;
+  
 }
 .ps{
   position: relative;
@@ -204,7 +220,7 @@ page{
   height: 40rpx;
   text-align: center;
   background-color: #fff;
-  box-shadow:0px 1px 2px 0px rgba(0, 0, 0, 0.2);
+  /* box-shadow:0px 1px 2px 0px rgba(0, 0, 0, 0.2); */
   padding: 14rpx 0px;
   margin-bottom: 20rpx;
 } 
@@ -222,4 +238,7 @@ page{
   letter-spacing: 1px;
   font-size:32rpx;
   line-height:40px;
+}
+button::after{
+  border: none;
 }

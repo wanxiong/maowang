@@ -14,7 +14,9 @@
       <!-- 小提示 是否收藏 -->
         <view class="save" style="right:{{right}}px;" wx:if="{{showSave}}">
           <text>添加到我的小程序，便捷购物</text>
-          <image bindtap="closeSave"  src="../../../image/close_3.png" mode='aspectFit'></image>
+          <view bindtap="closeSave">
+            <image  src="../../../image/close_3.png" mode='aspectFit'></image>
+          </view>
           <text class="sanjiao" style="right: {{rightSan}}px;"></text>
         </view>
     </view>

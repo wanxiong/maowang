@@ -3,7 +3,7 @@
 <!-- 顶部图片钱展示 -->
 <view class="top_bg">
   <view>
-    <image src="../../image/new_people_bg.png" mode="aspectFill"></image>
+    <image src="https://api.caose.cn/shopapi/image/new_people_bg.png" mode="aspectFill"></image>
     <view class="tob_money">
       <text>{{data.bonus_money}}</text>
       <image mode="aspectFill" bindtap="close_money" class="money_icon" src='../../image/money-icon.png'></image>

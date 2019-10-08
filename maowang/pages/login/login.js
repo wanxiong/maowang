@@ -8,7 +8,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    navH: 0,
     params: false,
     text: '',
     shareInfo: {},
@@ -19,9 +18,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      navH: app.globalData.navHeight
-    })
     //  是否微信扫码过来的
     console.log('是否有参数~~~~~~~~~~~~~~~~~')
     console.log(options)
@@ -41,7 +37,10 @@ Page({
     //
     if (options.share || shareId) {
       this.setData({ text: options.share || shareId, params: true})
-      this.getShare()
+      setTimeout(() => {
+        this.getShare()
+      }, 200)
+      
     }
   },
 
@@ -49,7 +48,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    console.log(99999999999999999)
   },
 
   /**

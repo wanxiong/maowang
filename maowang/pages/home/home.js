@@ -19,7 +19,7 @@ Page({
     data: {},
     navH: 0,
     timer: '',
-    isShow: false,
+    isShow: true,
     shareMoney: 0,
     showMoney: false,
     apiTwoPage: 0, // 1 2 3 4第二个API  56第3个API， 789没有了
@@ -36,6 +36,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
     this.setData({
       navH: app.globalData.navHeight
     })
@@ -55,7 +56,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let info = wx.getStorageSync('login_info');
+    if (info || info.sesskey) {
+      this.setData({
+        showMoney: false
+      })
+    } else {
+      // .....
+    }
   },
 
   /**
@@ -82,15 +90,16 @@ Page({
         ],
         apiThreePageData: {},
         loadMoreFlag: false,
-        timer: ''
       })
       wx.stopPullDownRefresh()
-    })
+    }, false)
     // this.initDataTwo(1);
     
   },
-  async initData (fn) {
-    await api.showLoading() // 显示loading
+  async initData (fn, loading = true) {
+    if (loading) {
+      await api.showLoading() // 显示loading
+    }
     let { data } = await this.getList()  // 请求数据
     this.setData({
       data
@@ -99,11 +108,15 @@ Page({
     if (data.promote_goods.promote_data.length) {
       this.countDowm(data.promote_goods.promote_info.leave_sale_time)
     }
-    await api.hideLoading() // 等待请求数据成功后，隐藏loading
+    if (loading) {
+      await api.hideLoading() // 等待请求数据成功后，隐藏loading
+    }
   },
   getList (parans = {}) {
+    let info = wx.getStorageSync('login_info');
     return new Promise((resolve, reject) => {
       api.getData(app.baseUrl + app.configApi.homeApi, {
+        key: info && info.sesskey || ''
       }).then((res) => {
         resolve(res)
       })
@@ -147,7 +160,7 @@ Page({
   close_money() {
     this.popUp.hideBox()
     this.setData({
-      showMoney: true
+      showMoney: true,
     })
   },
 
@@ -189,6 +202,10 @@ Page({
           showMoney: true
         })
         this.openMoney()
+      } else {
+        this.setData({
+          showMoney: false
+        })
       }
       api.hideLoading() // 等待请求数据成功后，隐藏loading
     })

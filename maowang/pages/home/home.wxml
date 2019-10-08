@@ -2,7 +2,7 @@
   <customBar navH="{{navH}}" text='首页' isFix bind:onChangeTitleBar="onChangeTitleBar" bind:onChangeQrcode="onChangeQrcode" opacity="{{opacity}}"/>
   <!-- 领钱按钮 -->
   <view class="money" wx:if="{{showMoney}}">
-    <image bindtap="openMoney" src="../../image/money.png" mode="aspectFill" />
+    <image bindtap="openMoney" src="https://api.caose.cn/shopapi/image/money.png" mode="aspectFill" />
   </view>
   <!-- 二维码 -->
   <view class="Scan" bindtap="scan">
@@ -94,7 +94,7 @@
             <view class='MW-MS-money-del'>
               <text>¥</text>
               <text>{{item.shop_price}}</text>
-              <text class='MW-MS-money-del-after'></text>
+              <!-- <text class='MW-MS-money-del-after'></text> -->
             </view>
           </view>
           <view class='MW-MS-money-img'>
@@ -124,7 +124,7 @@
             <view class='MW-PT-money-del'>
               <text>¥</text>
               <text>{{item.shop_price}}</text>
-              <text class='MW-PT-money-del-after'></text>
+              <!-- <text class='MW-PT-money-del-after'></text> -->
             </view>
           </view>
           <view class='MW-PT-money-img'>
@@ -164,7 +164,9 @@
           <view class="item_box_money">
             <image class="money_icon_1 inline-block" src="../../image/money_icon.png" mode="aspectFill"></image>
             <text>{{item.shop_price}}</text>
-            <text>原价￥{{item.market_price}}</text>
+            <view>
+              原价￥{{item.market_price}}
+            </view>
           </view>
         </view>
       </view>
@@ -228,11 +230,11 @@
 
 
 <!--  领奖界面  -->
-<popup show="{{isShow}}" trigger="{{true}}" bind:closePop="closePop" style_in='fadeIn' style_out='fadeOut'  bind:animaEnd="animaEnd" class="changeAward">
+<popup show="{{isShow}}" trigger="{{true}}" bind:closePop="closePop" style_in='show' style_out='hide'  bind:animaEnd="animaEnd" class="changeAward">
   <view class='p-contain' catchtap='maxStartPla'>
     <view class="close_icon"></view>
     <view class="money_link">
-      <image mode="aspectFill" bindtap="goShare" class="money_link_icon" src='../../image/money_link.png'>
+      <image mode="aspectFill" bindtap="goShare" class="money_link_icon" src='https://api.caose.cn/shopapi/image/money_link.png'>
       </image>
       <image mode="aspectFill" bindtap="close_money" class="close_icon" src='../../image/close_2.png'></image>
       <view class="share-money">

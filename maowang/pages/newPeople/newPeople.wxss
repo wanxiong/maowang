@@ -38,7 +38,7 @@ page{
   font-size:28rpx;
   color:rgba(51,51,51,1);
   height: 76rpx;
-  text-align: center;
+  text-align: left;
   margin-top: 20rpx;
 }
 .item_box_money{

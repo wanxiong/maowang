@@ -24,8 +24,8 @@ App({
         this.globalData.inputWidth = bar.left - 30 -10;
         this.globalMenuBound = bar;
         this.globalSystem = globalSystem;
-        console.log(this.globalMenuBound)
-        console.log(this.globalSystem)
+        // console.log(this.globalMenuBound)
+        // console.log(this.globalSystem)
       }, fail(err) {
         console.log(err);
       }

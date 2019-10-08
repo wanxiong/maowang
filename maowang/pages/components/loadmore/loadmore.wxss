@@ -1,15 +1,15 @@
 
 /* loading */
 .loadEffect{
-      width: 100rpx;
-      height: 100rpx;
+      width: 40px;
+      height: 40px;
       position: relative;
       margin: 30rpx auto;
   }
   .loadEffect text{
       display: inline-block;
-      width: 12rpx;
-      height: 12rpx;
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
       background: #df2054;
       position: absolute;
@@ -26,44 +26,44 @@
   .loadEffect text:nth-child(1){
       left: 0;
       top: 50%;
-      margin-top:-8rpx;
+      margin-top:-2.5px;
       -webkit-animation-delay:0.13s;
   }
   .loadEffect text:nth-child(2){
-      left: 12rpx;
-      top: 12rpx;
+      left: 5px;
+      top: 6px;
       -webkit-animation-delay:0.26s;
   }
   .loadEffect text:nth-child(3){
       left: 50%;
-      top: 0;
-      margin-left: -8rpx;
+      top: 1px;
+      margin-left: -2.5px;
       -webkit-animation-delay:0.39s;
   }
   .loadEffect text:nth-child(4){
-      top: 12rpx;
-      right:12rpx;
+      top: 6px;
+      right:5px;
       -webkit-animation-delay:0.52s;
   }
   .loadEffect text:nth-child(5){
       right: 0;
       top: 50%;
-      margin-top:-8rpx;
+      margin-top:-2.5px;
       -webkit-animation-delay:0.65s;
   }
   .loadEffect text:nth-child(6){
-      right: 12rpx;
-      bottom:12rpx;
+      right: 5px;
+      bottom:6px;
       -webkit-animation-delay:0.78s;
   }
   .loadEffect text:nth-child(7){
-      bottom: 0;
+      bottom: 1px;
       left: 50%;
-      margin-left: -8rpx;
+      margin-left: -2.5px;
       -webkit-animation-delay:0.91s;
   }
   .loadEffect text:nth-child(8){
-      bottom: 12rpx;
-      left: 12rpx;
+      bottom: 6px;
+      left: 5px;
       -webkit-animation-delay:1.04s;
   }

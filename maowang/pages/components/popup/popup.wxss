@@ -13,3 +13,9 @@
   height: 100%;
   position: relative;
 }
+.show{
+  display: block;
+}
+.hide{
+  display: none;
+}

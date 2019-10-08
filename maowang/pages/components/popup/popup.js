@@ -41,12 +41,18 @@ Component({
     */
     hideBox(callback) {
       this.setData({ show: false })
+      console.log(this.data.style_out)
+      if (this.data.style_out === 'hide') {
+        this.setData({ animateFlg: false })
+        callback && callback()
+      } else {
       setTimeout(() => {
         this.setData({ animateFlg: false })
         //if (flg) return this.triggerEvent('animaEnd', '')
         callback && callback()
         
       }, 800)
+      }
     },
     //关闭弹出层
     triggerClose() {
