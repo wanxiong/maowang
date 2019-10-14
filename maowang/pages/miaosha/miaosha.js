@@ -12,8 +12,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    oneText: "www",
-    twoText: 'aaa',
+    oneText: "",
+    twoText: '',
     navH: 0,
     tabbar: 1, // 1 正在抢购 2 即将开抢
     startData: [],
@@ -373,7 +373,7 @@ Page({
         console.log(res.msg.split(',')[0])
         this.setData({
           oneText: res.msg.split(',')[0],
-          twoText: res.msg.split(',')[1]
+          twoText: res.msg.split(',')[1] || ''
         })
         this.loadingTip.show()
         await api.hideLoading() // 等待请求数据成功后，隐藏loading
